@@ -1,0 +1,26 @@
+name: 🤖 Dependencies Update
+
+on:
+  schedule:
+    - cron: 0 0 * * *
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  Update:
+    runs-on: Ubuntu-Latest
+
+    steps:
+      - name: 🚚 Checkout Repository
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+
+      - name: 🦕 Update Dependencies
+        uses: hasundue/molt-action@2042116c4f16e14c08c98130f1470c19c5cbfd2f # v1.0.2
+        with:
+          author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          branch: deps-deno
+          commit-prefix: "chore(deps):"
+          labels:

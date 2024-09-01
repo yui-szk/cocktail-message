@@ -1,7 +1,7 @@
 import { assertEquals } from "@std/assert";
 import { STATUS_CODE } from "@std/http/status";
 
-import { app } from "./server.ts";
+import { app } from "./server.tsx";
 
 Deno.test("Serve", async (t: Deno.TestContext) => {
   await t.step("/", async () => {

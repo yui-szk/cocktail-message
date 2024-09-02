@@ -56,19 +56,21 @@ const wordListContainerStyle = css`
 const wordListStyle = css`
   list-style: none;
   color: var(--color-main);
-  height: calc(100vh - 28vh - 7.5rem);
+  height: calc(100vh - 24vh - 9.25rem);
   overflow-y: scroll;
 
   li {
     display: grid;
-    grid-template-columns: 3fr 1fr;
-    font-size: 0.9rem;
+    grid-template-columns: 5fr 2fr;
+    font-size: 1rem;
     align-items: center;
     padding: 1rem;
+    padding-left: 1.5rem;
     border-top: solid 1px var(--color-stroke);
 
     small {
-      font-size: 0.6rem;
+      color: #7c7c7c;
+      font-size: 0.75rem;
     }
   }
 `;

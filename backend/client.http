@@ -1,23 +1,20 @@
-###
+### Root
 
 GET http://localhost:8000
 
-###
 
-GET http://localhost:8000/api
+### Cocktail API
 
-###
-
-GET http://localhost:8000/api/get?name=アイリッシュコーヒー
+GET http://localhost:8000/api/cocktail
 
 ###
 
-GET http://localhost:8000/api/get?name=none
+GET http://localhost:8000/api/cocktail?name=none
 
 ###
 
-GET http://localhost:8000/api/get
+GET http://localhost:8000/api/cocktail?name=アイリッシュコーヒー
 
 ###
 
-GET http://localhost:8000/api/all
+GET http://localhost:8000/api/cocktail/all

@@ -15,7 +15,7 @@ import { app as api } from "./api/mod.ts";
 export const app: Hono = new Hono();
 app.use(logger());
 app
-  .get("/", (ctx: Context) => ctx.text("Hello, World!"))
+  .get("/", (ctx: Context) => ctx.text("Cocktail Message App"))
   .route("/api", api);
 
 Deno.serve(app.fetch);

@@ -16,7 +16,7 @@ export type { InferOutput, strictObject };
 export const Cocktail = strictObject({
   name: pipe(string(), trim(), nonEmpty()),
   word: pipe(string(), trim(), nonEmpty()),
-  color: pipe(string(), trim(), hexColor()),
+  color: pipe(string(), hexColor(), trim()),
 });
 
 /**

@@ -2,8 +2,8 @@ import { parse } from "@std/jsonc";
 
 import type { Cocktail } from "../utils/types.ts";
 
-const file = "./private/cocktails.jsonc";
-const data: string = await Deno.readTextFile(file);
+const cocktailFile = "./private/cocktails.jsonc";
+const cocktailData: string = await Deno.readTextFile(cocktailFile);
 
 /**
  * An array of cocktails data
@@ -13,4 +13,4 @@ const data: string = await Deno.readTextFile(file);
  * console.log(cocktails);
  * ```
  */
-export const cocktails: Cocktail[] = parse(data) as Cocktail[];
+export const cocktails: Cocktail[] = parse(cocktailData) as Cocktail[];

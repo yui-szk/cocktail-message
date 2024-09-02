@@ -21,11 +21,10 @@ const layoutStyle = css`
       background-color: #443d3a;
     }
     html {
-      font-size: 62.5%;
       overflow-y: hidden;
     }
     body {
-      margin: 0 3rem;
+      margin: 0 1.75rem;
     }
     div {
       max-width: 430px;

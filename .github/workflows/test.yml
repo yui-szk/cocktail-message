@@ -15,8 +15,11 @@ on:
       - .github/workflows/test.yml
 
 jobs:
-  Test:
+  Deno:
     runs-on: Ubuntu-Latest
+    defaults:
+      run:
+        working-directory: ./backend
 
     steps:
       - name: 🚚 Checkout Repository

@@ -9,6 +9,25 @@ const delete_button = document.getElementById("delete_button");
 const decided = document.getElementById("clicked_button");//選択した語句が表示
 document.body.insertBefore(decided, container);//kennsakuの前にdecidedの要素を挿入
 
+window.addEventListener('load', (event) => {
+    // ウィンドウが読み込まれた時の処理
+    fetch('http://localhost:8000/api/cocktail/all')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json(); // JSON形式のレスポンスをパース
+        })
+        .then(data => {
+            console.log('Received data:', data); // 取得したデータをコンソールに出力
+            // ここで、データを使った他の処理を実行することができます
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error); // エラーハンドリング
+        });
+});
+
+
 function buttonclick(event){
     const b_text = event.target.textContent;
 

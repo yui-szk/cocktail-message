@@ -38,7 +38,7 @@ Deno.test("API", async (t: Deno.TestContext) => {
     assertEquals(res.status, STATUS_CODE.OK);
   });
 
-  await t.step("/all", async () => {
+  await t.step("GET /all", async () => {
     const res: Response = await app.request("/all");
 
     assertExists(await res.json());

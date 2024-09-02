@@ -1,0 +1,32 @@
+body {
+    background-color: darkgray;
+}
+
+button {
+    display: block;
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 30px;
+    width: 300px;
+}
+
+#clicked_button {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#container {
+    background-color: #007BFF; /* 青色の背景 */
+    padding: 20px;             /* 内側の余白 */
+    border-radius: 10px;       /* 角を丸める */
+    max-width: 100%;           /* コンテナの幅を画面幅に合わせる */
+    margin: 0 auto;            /* 中央に配置 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影をつけて浮き上がったように見せる */
+    position: relative;        /* 子要素の絶対位置指定のため */
+}

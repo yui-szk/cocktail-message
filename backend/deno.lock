@@ -1,0 +1,91 @@
+{
+  "version": "3",
+  "packages": {
+    "specifiers": {
+      "jsr:@hono/hono@4.5.9": "jsr:@hono/hono@4.5.9",
+      "jsr:@std/assert@1.0.3": "jsr:@std/assert@1.0.3",
+      "jsr:@std/cli@^1.0.4": "jsr:@std/cli@1.0.4",
+      "jsr:@std/encoding@^1.0.3": "jsr:@std/encoding@1.0.3",
+      "jsr:@std/fmt@^1.0.1": "jsr:@std/fmt@1.0.1",
+      "jsr:@std/http@1.0.4": "jsr:@std/http@1.0.4",
+      "jsr:@std/internal@^1.0.2": "jsr:@std/internal@1.0.2",
+      "jsr:@std/json@^1.0.0": "jsr:@std/json@1.0.0",
+      "jsr:@std/jsonc@1.0.1": "jsr:@std/jsonc@1.0.1",
+      "jsr:@std/media-types@^1.0.3": "jsr:@std/media-types@1.0.3",
+      "jsr:@std/net@^1.0.1": "jsr:@std/net@1.0.1",
+      "jsr:@std/path@^1.0.3": "jsr:@std/path@1.0.3",
+      "jsr:@std/streams@^1.0.0": "jsr:@std/streams@1.0.3",
+      "jsr:@std/streams@^1.0.3": "jsr:@std/streams@1.0.3",
+      "jsr:@valibot/valibot@0.41.0": "jsr:@valibot/valibot@0.41.0"
+    },
+    "jsr": {
+      "@hono/hono@4.5.9": {
+        "integrity": "47f561e67aedbd6d1e21e3a1ae26c1b80ffdb62a51c161d502e75bee17ca40af"
+      },
+      "@std/assert@1.0.3": {
+        "integrity": "b0d03ce1ced880df67132eea140623010d415848df66f6aa5df76507ca7c26d8",
+        "dependencies": [
+          "jsr:@std/internal@^1.0.2"
+        ]
+      },
+      "@std/cli@1.0.4": {
+        "integrity": "79ca75add572a99a8ba93ae37ccbd8d43fb4e2b635a8a7ebebb4f2d092048764"
+      },
+      "@std/encoding@1.0.3": {
+        "integrity": "5dbc2d7f5aa6062de7e19862ea856ac7a0dcce0b6fb46bb7b332d3bdcd4408b7"
+      },
+      "@std/fmt@1.0.1": {
+        "integrity": "ef76c37faa7720faa8c20fd8cc74583f9b1e356dfd630c8714baa716a45856ab"
+      },
+      "@std/http@1.0.4": {
+        "integrity": "1a8142217907d49c4687f90ef3d257e7df2baf344c5122c322d7316df09df453",
+        "dependencies": [
+          "jsr:@std/cli@^1.0.4",
+          "jsr:@std/encoding@^1.0.3",
+          "jsr:@std/fmt@^1.0.1",
+          "jsr:@std/media-types@^1.0.3",
+          "jsr:@std/net@^1.0.1",
+          "jsr:@std/path@^1.0.3",
+          "jsr:@std/streams@^1.0.3"
+        ]
+      },
+      "@std/internal@1.0.2": {
+        "integrity": "f4cabe2021352e8bfc24e6569700df87bf070914fc38d4b23eddd20108ac4495"
+      },
+      "@std/json@1.0.0": {
+        "integrity": "985c1e544918d42e4e84072fc739ac4a19c3a5093292c99742ffcdd03fb6a268"
+      },
+      "@std/jsonc@1.0.1": {
+        "integrity": "6b36956e2a7cbb08ca5ad7fbec72e661e6217c202f348496ea88747636710dda",
+        "dependencies": [
+          "jsr:@std/json@^1.0.0"
+        ]
+      },
+      "@std/media-types@1.0.3": {
+        "integrity": "b12d30a7852f7578f4d210622df713bbfd1cbdd9b4ec2eaf5c1845ab70bab159"
+      },
+      "@std/net@1.0.1": {
+        "integrity": "27fe136ab7ae81f425df90aad190bae2c87d2aef3d1a49cbc0efc1daa287d794"
+      },
+      "@std/path@1.0.3": {
+        "integrity": "cd89d014ce7eb3742f2147b990f6753ee51d95276bfc211bc50c860c1bc7df6f"
+      },
+      "@std/streams@1.0.3": {
+        "integrity": "d62e645ab981cee2c3d03040eb03cf387fc6bceef6d4564f3ed485a43741a81f"
+      },
+      "@valibot/valibot@0.41.0": {
+        "integrity": "cf2490dac509f85a943f97fcabf1e912ffb19ec1dad77fec7c40812513e63764"
+      }
+    }
+  },
+  "remote": {},
+  "workspace": {
+    "dependencies": [
+      "jsr:@hono/hono@4.5.9",
+      "jsr:@std/assert@1.0.3",
+      "jsr:@std/http@1.0.4",
+      "jsr:@std/jsonc@1.0.1",
+      "jsr:@valibot/valibot@0.41.0"
+    ]
+  }
+}

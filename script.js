@@ -22,6 +22,10 @@ function buttonclick(event){
     }
 }
 
+function sakuzyo_sentence(){
+    decided.innerHTML = '';
+}
+
 function updatecontainersize(){
     var buttonstyle = window.getComputedStyle(document.getElementById('button'), '');
     const height = buttonstyle.getPropertyValue('height');

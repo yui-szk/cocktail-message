@@ -27,8 +27,9 @@ const layoutStyle = css`
     body {
       margin: 0 3rem;
     }
-    h1 {
-      font-size: 3rem;
+    div {
+      max-width: 430px;
+      margin: 0 auto;
     }
   }
 `;
@@ -43,7 +44,7 @@ export function WithHTMX({ children }: { children: unknown }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body class={layoutStyle}>
-        {children}
+        <div>{children}</div>
         <script src="https://unpkg.com/htmx.org@1.9.10"></script>
       </body>
     </HTML>

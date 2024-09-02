@@ -1,10 +1,10 @@
 import { type Context, Hono } from "@hono/hono";
 export type { Hono };
 
-import { cocktailApi } from "./router/mod.ts";
+import { cocktailApi, messageApi } from "./router/mod.ts";
 
 /**
- * The cocktail API
+ * The Cocktail Message App API
  *
  * @example Return the requested cocktail detail
  * ```ts
@@ -13,6 +13,28 @@ import { cocktailApi } from "./router/mod.ts";
  * @example Return an array of all cocktails
  * ```ts
  * const res: Response = await api.request("/cocktail/all");
+ * ```
+ *
+ * @example Return the requested message detail
+ * ```ts
+ * const res: Response = await api.request("/message?id=62095b31-b643-4566-9e69-7edc9c901fea");
+ * ```
+ * @example Add a new message
+ * ```ts
+ * const res: Response = await app.request("/message", {
+ *   method: "POST",
+ *   headers: { "Content-Type": "application/json" },
+ *   body: JSON.stringify({
+ *     "cocktails": [
+ *       { "name": "アイリッシュコーヒー" },
+ *       { "name": "アイ・オープナー" },
+ *     ],
+ *   }),
+ * });
+ * ```
+ * @example Return an array of all messages
+ * ```ts
+ * const res: Response = await api.request("/message/all");
  * ```
  */
 export const app: Hono = new Hono();
@@ -33,4 +55,5 @@ export type API = typeof route;
 export const route: Hono = app;
 app
   .get("/", (ctx: Context) => ctx.text("Cocktail Message API"))
-  .route("/cocktail", cocktailApi);
+  .route("/cocktail", cocktailApi)
+  .route("/message", messageApi);

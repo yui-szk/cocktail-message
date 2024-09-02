@@ -27,7 +27,7 @@ Deno.test("Cocktail API", async (t: Deno.TestContext) => {
   await t.step("GET /?name=アイリッシュコーヒー", async () => {
     const res: Response = await app.request("/?name=アイリッシュコーヒー");
 
-    assertExists(await res.json());
+    assertEquals((await res.json()).success, true);
     assertEquals(res.status, STATUS_CODE.OK);
   });
 

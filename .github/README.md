@@ -1,16 +1,11 @@
 # online-2024-e
 
-```sh
-# For development
-deno task dev
+## Backend
+
+You can import the API entrypoints and the cocktail type with the following code:
+
+```ts
+import type { API, Cocktail } from "/backend/src/api/mod.ts";
 ```
 
-```sh
-# For production
-deno task start
-```
-
-```sh
-# For test
-deno task test
-```
+For more information, see [the Hono RPC documentation](https://hono.dev/docs/guides/rpc#client).

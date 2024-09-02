@@ -1,11 +1,16 @@
 import {
+  array,
+  date,
   hexColor,
   InferOutput,
   nonEmpty,
+  optional,
+  pick,
   pipe,
   strictObject,
   string,
   trim,
+  uuid,
 } from "@valibot/valibot";
 export type { InferOutput, strictObject };
 
@@ -23,3 +28,18 @@ export const Cocktail = strictObject({
  * Cocktail type
  */
 export type Cocktail = InferOutput<typeof Cocktail>;
+
+/**
+ * Message API validation
+ * @internal
+ */
+export const Message = strictObject({
+  id: optional(pipe(string(), uuid(), trim(), nonEmpty())),
+  date: optional(date()),
+  cocktails: array(pick(Cocktail, ["name"])),
+});
+
+/**
+ * Message type
+ */
+export type Message = InferOutput<typeof Message>;

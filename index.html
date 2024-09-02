@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Frontend</title>
+</head>
+<body>
+    <h1>Send Data to Backend</h1>
+    <form id="dataForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <button type="submit">Send</button>
+    </form>
+
+    <script>
+        // フォームの送信イベントをキャッチ
+        document.getElementById('dataForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // デフォルトのフォーム送信を防ぐ
+
+            const name = document.getElementById('name').value; // フォームからデータを取得
+
+            // データをバックエンドに送信
+            fetch('http://localhost:3000/api/data', {
+                method: 'POST', // POSTメソッドを使用
+                headers: {
+                    'Content-Type': 'application/json' // JSONデータを送信
+                },
+                body: JSON.stringify({ name: name }) // データをJSON形式に変換して送信
+            })
+            .then(response => response.json()) // レスポンスをJSONとしてパース
+            .then(data => {
+                console.log('Success:', data); // 成功した場合の処理
+            })
+            .catch((error) => {
+                console.error('Error:', error); // エラーが発生した場合の処理
+            });
+        });
+    </script>
+</body>
+</html>

@@ -13,8 +13,6 @@ import { logger } from "@hono/hono/logger";
 export const app: Hono = new Hono();
 app.use(logger());
 app
-  .get("/", (ctx: Context) => {
-    return ctx.text("Hello, World!");
-  });
+  .get("/", (ctx: Context) => ctx.text("Hello, World!"));
 
 Deno.serve(app.fetch);

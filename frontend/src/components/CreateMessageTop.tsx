@@ -10,16 +10,16 @@ const imageStyle = css`
 
 const buttonStyle = css`
   position: absolute;
-  bottom: 6rem;
-  background-color: #e9e3dd;
-  border-radius: 0.25rem;
+  bottom: 4rem;
+  background-color: var(--color-base);
+  border-radius: 0.5rem;
 
   a {
     display: block;
-    color: #000000;
+    color: var(--color-black);
     text-decoration: none;
-    padding: 2.5rem 2rem;
-    font-size: 1.5rem;
+    padding: 2rem 1.5rem;
+    font-size: 1rem;
   }
 `;
 

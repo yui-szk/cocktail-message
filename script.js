@@ -1,17 +1,25 @@
 tmp_list = ['apple', 'orange', 'grape', 'strawberry', 'apples'];//テスト用
+created_sentence = [];
 
 const search_str = document.getElementById("kennsaku");
 const search_result = document.getElementById("kennsaku_result");
 const container = document.getElementById('container');
+const delete_button = document.getElementById("delete_button");
 
 const decided = document.getElementById("clicked_button");//選択した語句が表示
 document.body.insertBefore(decided, container);//kennsakuの前にdecidedの要素を挿入
 
 function buttonclick(event){
     const b_text = event.target.textContent;
-    const newButton = document.createElement('button');
-    newButton.textContent = b_text;
-    decided.appendChild(newButton);
+
+    if(created_sentence.includes(b_text)){
+        //nothing
+    }else{
+        const newButton = document.createElement('button');
+        created_sentence.push(b_text);
+        newButton.textContent = b_text;
+        decided.appendChild(newButton);
+    }
 }
 
 function updatecontainersize(){

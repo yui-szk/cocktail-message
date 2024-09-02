@@ -9,13 +9,9 @@ import { cocktails } from "./utils/data.ts";
 /**
  * The cocktail API
  *
- * @example Return a response
- * ```ts
- * const res: Response = await api.request("/");
- * ```
  * @example Return the requested cocktail detail
  * ```ts
- * const res: Response = await api.request("/get?name=アイリッシュコーヒー");
+ * const res: Response = await api.request("/?name=アイリッシュコーヒー");
  * ```
  * @example Return an array of all cocktails
  * ```ts
@@ -38,8 +34,7 @@ export type API = typeof route;
  * The cocktail API route
  */
 export const route: Hono = app
-  .get("/", (ctx: Context) => ctx.text("Cocktail API"))
-  .get("/get", (ctx: Context) => {
+  .get("/", (ctx: Context) => {
     const name: string | undefined = ctx.req.query("name");
     if (!name) {
       return ctx.json(

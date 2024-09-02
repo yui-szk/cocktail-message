@@ -1,7 +1,7 @@
 import {
   hexColor,
   InferOutput,
-  minLength,
+  nonEmpty,
   pipe,
   strictObject,
   string,
@@ -14,8 +14,8 @@ export type { InferOutput, strictObject };
  * @internal
  */
 export const Cocktail = strictObject({
-  name: pipe(string(), trim(), minLength(1)),
-  word: pipe(string(), trim(), minLength(1)),
+  name: pipe(string(), trim(), nonEmpty()),
+  word: pipe(string(), trim(), nonEmpty()),
   color: pipe(string(), trim(), hexColor()),
 });
 

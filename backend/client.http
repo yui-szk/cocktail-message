@@ -1,0 +1,23 @@
+###
+
+GET http://localhost:8000
+
+###
+
+GET http://localhost:8000/api
+
+###
+
+GET http://localhost:8000/api/get?name=アイリッシュコーヒー
+
+###
+
+GET http://localhost:8000/api/get?name=none
+
+###
+
+GET http://localhost:8000/api/get
+
+###
+
+GET http://localhost:8000/api/all

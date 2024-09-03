@@ -125,15 +125,15 @@ export function CreateMessageSelect() {
         </div>
         <div class={wordListContainerStyle}>
           <div>
-            <form action="" hx-post="" hx-trigger="submit">
+            <form action="">
               <input type="text" />
               <button type="submit">
-                <span class="material-symbols-outlined">search</span>{" "}
+                <span class="material-symbols-outlined">search</span>
               </button>
             </form>
           </div>
           <ul class={wordListStyle}>
-            <li hx-post="" hx-trigger="click">
+            <li>
               あなたを守りたい<small>ブルドッグ</small>
             </li>
             <li>

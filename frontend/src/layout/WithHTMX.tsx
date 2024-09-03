@@ -44,7 +44,6 @@ export function WithHTMX({ children }: { children: unknown }) {
       </head>
       <body class={layoutStyle}>
         <div>{children}</div>
-        <script src="https://unpkg.com/htmx.org@1.9.10"></script>
       </body>
     </HTML>
   );

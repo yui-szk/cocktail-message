@@ -3,6 +3,11 @@
 GET http://localhost:8000
 
 
+### API
+
+GET http://localhost:8000/api
+
+
 ### Cocktail API
 
 GET http://localhost:8000/api/cocktail
@@ -18,3 +23,52 @@ GET http://localhost:8000/api/cocktail?name=アイリッシュコーヒー
 ###
 
 GET http://localhost:8000/api/cocktail/all
+
+
+### Message API
+
+GET http://localhost:8000/api/message
+
+###
+
+GET http://localhost:8000/api/message?id=none
+
+###
+
+GET http://localhost:8000/api/message?id=62095b31-b643-4566-9e69-7edc9c901fea
+
+###
+
+POST http://localhost:8000/api/message
+Content-Type: application/json
+
+{
+  "cocktails": []
+}
+
+###
+
+POST http://localhost:8000/api/message
+Content-Type: application/json
+
+{
+  "cocktails": [
+    { "name": "not-found" }
+  ]
+}
+
+###
+
+POST http://localhost:8000/api/message
+Content-Type: application/json
+
+{
+  "cocktails": [
+    { "name": "アイリッシュコーヒー" },
+    { "name": "アイ・オープナー" }
+  ]
+}
+
+###
+
+GET http://localhost:8000/api/message/all

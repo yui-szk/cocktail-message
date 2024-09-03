@@ -31,7 +31,7 @@ const buttonStyle = css`
  * @function
  */
 
-export function CreateMessageTop() {
+export const CreateMessageTop = () => {
   return (
     <WithHTML>
       <div>
@@ -48,4 +48,4 @@ export function CreateMessageTop() {
       </div>
     </WithHTML>
   );
-}
+};

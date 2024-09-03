@@ -99,7 +99,7 @@ const checkLinkStyle = css`
  * @function
  */
 
-export function CreateMessageSelect() {
+export const CreateMessageSelect = () => {
   return (
     <WithHTML>
       <link
@@ -181,4 +181,4 @@ export function CreateMessageSelect() {
       </div>
     </WithHTML>
   );
-}
+};

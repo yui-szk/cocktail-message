@@ -37,7 +37,7 @@ const layoutStyle = css`
  * @function
  */
 
-export function WithHTML({ children }: { children: unknown }) {
+export const WithHTML = ({ children }: { children: unknown }) => {
   return (
     <HTML>
       <head>
@@ -51,4 +51,4 @@ export function WithHTML({ children }: { children: unknown }) {
       </body>
     </HTML>
   );
-}
+};

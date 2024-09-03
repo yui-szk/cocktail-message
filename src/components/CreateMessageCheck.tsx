@@ -57,7 +57,7 @@ const sendButtonStyle = css`
  * @function
  */
 
-export function CreateMessageCheck() {
+export const CreateMessageCheck = () => {
   return (
     <WithHTML>
       <div>
@@ -88,4 +88,4 @@ export function CreateMessageCheck() {
       </div>
     </WithHTML>
   );
-}
+};

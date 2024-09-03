@@ -76,14 +76,14 @@ export const CreateMessageCheck = () => {
         </div>
         <div class={buttonContainerStyle}>
           <div class={buttonStyle}>
-            <a href="/create/select">
+            <a href="./select">
               気持ちを
               <br />
               追加する
             </a>
           </div>
           <div class={cx(buttonStyle, sendButtonStyle)}>
-            <a href="/create/check">
+            <a href="./check">
               気持ちを
               <br />
               送る

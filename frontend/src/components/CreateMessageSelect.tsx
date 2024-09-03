@@ -102,14 +102,24 @@ export function CreateMessageSelect() {
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
       />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+      />
       <div>
         <div>
           <ul class={selectedStyle}>
             <li>
-              あなたを守りたい<button>✖️</button>
+              あなたを守りたい
+              <button>
+                <span class="material-symbols-outlined">close</span>
+              </button>
             </li>
             <li>
-              いつも2人で<button>✖️</button>
+              いつも2人で
+              <button>
+                <span class="material-symbols-outlined">close</span>
+              </button>
             </li>
           </ul>
         </div>

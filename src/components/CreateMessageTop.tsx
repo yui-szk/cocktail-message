@@ -32,7 +32,7 @@ export function CreateMessageTop() {
     <WithHTML>
       <div>
         <div class={imageStyle}>
-          <img src="../images/empty-glass.png" alt="empty glass" />
+          <img src="/images/empty-glass.png" alt="empty glass" />
         </div>
         <div class={buttonStyle}>
           <a href="/create/select">

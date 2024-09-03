@@ -1,6 +1,6 @@
 import { parse } from "@std/jsonc";
 
-import type { Cocktail, Message } from "../utils/types.ts";
+import type { Cocktail, Message } from "./types.ts";
 
 const cocktailFile = "./private/cocktails.jsonc";
 const cocktailData: string = await Deno.readTextFile(cocktailFile);

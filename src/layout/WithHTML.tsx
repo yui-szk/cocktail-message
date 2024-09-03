@@ -26,7 +26,7 @@ const layoutStyle = css`
     body {
       margin: 0 1.75rem;
     }
-    div {
+    .content {
       max-width: 430px;
       margin: 0 auto;
     }
@@ -47,7 +47,7 @@ export const WithHTML = ({ children }: { children: unknown }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body class={layoutStyle}>
-        <div>{children}</div>
+        <div class="content">{children}</div>
       </body>
     </HTML>
   );

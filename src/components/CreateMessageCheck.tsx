@@ -2,7 +2,7 @@ import { css, cx } from "@hono/hono/css";
 import { WithHTML } from "../layout/WithHTML.tsx";
 
 const imageStyle = css`
-  height: 90vh;
+  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,19 +21,23 @@ const messageStyle = css`
   width: 7rem;
   height: 7rem;
   border-radius: 100%;
-  left: 2rem;
-  top: 18rem;
 
   p {
     color: #000000;
   }
 `;
 
+const buttonContainerStyle = css`
+  display: flex;
+  justify-content: space-between;
+`;
+
 const buttonStyle = css`
-  position: absolute;
-  bottom: 4rem;
+  margin-bottom: 4rem;
   background-color: var(--color-base);
   border-radius: 0.5rem;
+  width: 7.5rem;
+  height: 7.5rem;
 
   a {
     display: block;
@@ -45,7 +49,6 @@ const buttonStyle = css`
 `;
 
 const sendButtonStyle = css`
-  right: 1.75rem;
   background-color: var(--color-accent);
 
   a {
@@ -71,19 +74,21 @@ export const CreateMessageCheck = () => {
             守りたい
           </p>
         </div>
-        <div class={buttonStyle}>
-          <a href="/create/select">
-            気持ちを
-            <br />
-            追加する
-          </a>
-        </div>
-        <div class={cx(buttonStyle, sendButtonStyle)}>
-          <a href="/create/check">
-            気持ちを
-            <br />
-            送る
-          </a>
+        <div class={buttonContainerStyle}>
+          <div class={buttonStyle}>
+            <a href="/create/select">
+              気持ちを
+              <br />
+              追加する
+            </a>
+          </div>
+          <div class={cx(buttonStyle, sendButtonStyle)}>
+            <a href="/create/check">
+              気持ちを
+              <br />
+              送る
+            </a>
+          </div>
         </div>
       </div>
     </WithHTML>

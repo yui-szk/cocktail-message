@@ -10,12 +10,6 @@ import { CreateMessageCheck } from "./CreateMessageCheck.tsx";
 export const createMessage = new Hono();
 
 createMessage
-  .get("/", (ctx) => {
-    return ctx.html(<CreateMessageTop />);
-  })
-  .get("/select", (ctx) => {
-    return ctx.html(<CreateMessageSelect />);
-  })
-  .get("/check", (ctx) => {
-    return ctx.html(<CreateMessageCheck />);
-  });
+  .get("/", (ctx) => ctx.html(<CreateMessageTop />))
+  .get("/select", (ctx) => ctx.html(<CreateMessageSelect />))
+  .get("/check", (ctx) => ctx.html(<CreateMessageCheck />));

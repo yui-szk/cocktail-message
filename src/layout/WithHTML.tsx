@@ -33,6 +33,10 @@ const layoutStyle = css`
   }
 `;
 
+/**
+ * @function
+ */
+
 export function WithHTML({ children }: { children: unknown }) {
   return (
     <HTML>

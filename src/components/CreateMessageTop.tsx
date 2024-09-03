@@ -27,6 +27,10 @@ const buttonStyle = css`
   }
 `;
 
+/**
+ * @function
+ */
+
 export function CreateMessageTop() {
   return (
     <WithHTML>

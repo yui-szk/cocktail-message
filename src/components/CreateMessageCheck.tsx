@@ -53,6 +53,10 @@ const sendButtonStyle = css`
   }
 `;
 
+/**
+ * @function
+ */
+
 export function CreateMessageCheck() {
   return (
     <WithHTML>

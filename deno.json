@@ -1,10 +1,14 @@
 {
+  "compilerOptions": {
+    "jsx": "precompile",
+    "jsxImportSource": "@hono/hono/jsx"
+  },
   "fmt": { "exclude": ["LICENSE", ".github/**/*.md"] },
   "tasks": {
-    "run": "deno run --allow-read='./private/cocktails.jsonc,./private/messages.jsonc' --allow-net='0.0.0.0'",
+    "run": "deno run --allow-read='./public/,./private/' --allow-net='0.0.0.0'",
     "start": "deno task run src/server.ts",
     "dev": "deno task run --watch src/server.ts",
-    "test": "deno test  --allow-read='./private/cocktails.jsonc,./private/messages.jsonc' --allow-net='0.0.0.0' --parallel --shuffle"
+    "test": "deno test  --allow-read='./public/,./private/' --allow-net='0.0.0.0' --parallel --shuffle"
   },
   "imports": {
     "@hono/hono": "jsr:@hono/hono@4.5.9",

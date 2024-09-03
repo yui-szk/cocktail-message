@@ -36,7 +36,7 @@ export const CreateMessageTop = () => {
     <WithHTML>
       <div>
         <div class={imageStyle}>
-          <img src="public/images/empty-glass.png" alt="empty glass" />
+          <img src="/public/images/empty-glass.png" alt="empty glass" />
         </div>
         <div class={buttonStyle}>
           <a href="/create/select">

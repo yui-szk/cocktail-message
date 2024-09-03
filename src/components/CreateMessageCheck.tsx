@@ -37,7 +37,8 @@ const buttonStyle = css`
   background-color: var(--color-base);
   border-radius: 0.5rem;
   width: 7.5rem;
-  height: 7.5rem;
+  height: 7.25rem;
+  text-align: center;
 
   a {
     display: block;

@@ -16,7 +16,4 @@ createMessage
   .get("/check", (ctx) => {
     return ctx.html(<CreateMessageCheck />);
   })
-  .use(
-    "/search-icon.svg",
-    serveStatic({ path: "./frontend/src/images/search-icon.svg" })
-  );
+  .use("/empty-glass.png", serveStatic({ path: "../images/empty-glass.png" }));

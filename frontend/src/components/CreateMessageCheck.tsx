@@ -2,10 +2,14 @@ import { css, cx } from "@hono/hono/css";
 import { WithHTML } from "../layout/WithHTML.tsx";
 
 const imageStyle = css`
-  height: 100vh;
+  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  img {
+    width: 24rem;
+  }
 `;
 
 const messageStyle = css`
@@ -54,7 +58,7 @@ export function CreateMessageCheck() {
     <WithHTML>
       <div>
         <div class={imageStyle}>
-          <img src="src/assets/images/empty-glass" alt="empty glass" />
+          <img src="../images/empty-glass.png" alt="empty glass" />
         </div>
         <div class={messageStyle}>
           <p>

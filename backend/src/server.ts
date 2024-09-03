@@ -18,6 +18,6 @@ app.use(logger());
 app
   .get("/", (ctx: Context) => ctx.text("Cocktail Message App"))
   .route("/api", api)
-  .route("/create", createMessage);
+  .route("/", createMessage);
 
 Deno.serve(app.fetch);

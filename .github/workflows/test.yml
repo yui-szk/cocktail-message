@@ -17,9 +17,6 @@ on:
 jobs:
   Deno:
     runs-on: Ubuntu-Latest
-    defaults:
-      run:
-        working-directory: ./backend
 
     steps:
       - name: 🚚 Checkout Repository

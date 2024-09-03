@@ -2,6 +2,10 @@ import { type Context, Hono } from "@hono/hono";
 export type { Hono };
 import { logger } from "@hono/hono/logger";
 
+<<<<<<< HEAD
+=======
+import { createMessage } from "../../frontend/src/components/router.tsx";
+>>>>>>> feature/issue7_add-create-message-screen
 import { app as api } from "./api/mod.ts";
 
 /**
@@ -16,6 +20,7 @@ export const app: Hono = new Hono();
 app.use(logger());
 app
   .get("/", (ctx: Context) => ctx.text("Cocktail Message App"))
-  .route("/api", api);
+  .route("/api", api)
+  .route("/", createMessage);
 
 Deno.serve(app.fetch);

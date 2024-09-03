@@ -39,7 +39,7 @@ export const CreateMessageTop = () => {
           <img src="/public/images/empty-glass.png" alt="empty glass" />
         </div>
         <div class={buttonStyle}>
-          <a href="/create/select">
+          <a href="/select">
             気持ちを
             <br />
             追加する

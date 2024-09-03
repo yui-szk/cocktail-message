@@ -8,6 +8,7 @@ import { cocktails } from "../utils/data.ts";
 
 /**
  * The cocktail API
+ * @internal
  *
  * @example Return the requested cocktail detail
  * ```ts
@@ -18,8 +19,7 @@ import { cocktails } from "../utils/data.ts";
  * const res: Response = await api.request("/all");
  * ```
  */
-export const app: Hono = new Hono();
-app
+export const app = new Hono()
   .get("/", (ctx: Context) => {
     const name: string | undefined = ctx.req.query("name");
     if (!name) {

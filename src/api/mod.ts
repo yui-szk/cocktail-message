@@ -5,6 +5,7 @@ import { cocktailApi, messageApi } from "./router/mod.ts";
 
 /**
  * The Cocktail Message App API
+ * @internal
  *
  * @example Return the requested cocktail detail
  * ```ts
@@ -37,7 +38,10 @@ import { cocktailApi, messageApi } from "./router/mod.ts";
  * const res: Response = await api.request("/message/all");
  * ```
  */
-export const app: Hono = new Hono();
+export const app = new Hono()
+  .get("/", (ctx: Context) => ctx.text("Cocktail Message API"))
+  .route("/cocktail", cocktailApi)
+  .route("/message", messageApi);
 
 /**
  * The cocktail API type
@@ -47,13 +51,4 @@ export const app: Hono = new Hono();
  * const client = hc<API>("/");
  * ```
  */
-export type API = typeof route;
-
-/**
- * The cocktail API route
- */
-export const route: Hono = app;
-app
-  .get("/", (ctx: Context) => ctx.text("Cocktail Message API"))
-  .route("/cocktail", cocktailApi)
-  .route("/message", messageApi);
+export type API = typeof app;

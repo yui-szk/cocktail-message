@@ -12,6 +12,7 @@ import { cocktailApi } from "./mod.ts";
 
 /**
  * The message API
+ * @internal
  *
  * @example Return the requested message detail
  * ```ts
@@ -35,8 +36,7 @@ import { cocktailApi } from "./mod.ts";
  * const res: Response = await api.request("/all");
  * ```
  */
-export const app: Hono = new Hono();
-app
+export const app = new Hono()
   .get("/", (ctx: Context) => {
     const id: string | undefined = ctx.req.query("id");
     if (!id) {

@@ -1,5 +1,5 @@
 //tmp_list = ['apple', 'orange', 'grape', 'strawberry', 'apples'];//テスト用
-created_sentence = [];
+let created_sentence = [];
 
 const container = document.getElementById('container');
 
@@ -31,6 +31,7 @@ function buttonclick(obj){
         }
     });
     const b_text = text;//クリックしたボタンの文字
+    //console.log(b_text);
 
 
     if(created_sentence.includes(b_text)){
@@ -40,7 +41,7 @@ function buttonclick(obj){
     }else{
         created_sentence.push(b_text);
 
-        console.log(created_sentence);//fortest
+        //console.log(created_sentence);//fortest
 
         const newLi = document.createElement("li");
         newLi.textContent = b_text;
@@ -91,29 +92,32 @@ function kennsaku_show() {
     });
 };
 
-function senntaku_kaizyo(obj) {
-    // clicked_button 内のすべてのボタンを取得
-    let text = '';
-    {/*obj.childNodes.forEach(node => {
-        if(node.nodeType === node.TEXT_NODE){
-            text += node.textContent.trim();
+
+document.addEventListener('DOMContentLoaded', function() {
+    // clicked_button 内のすべての <li> 要素を取得
+    const clickedButtonContainer = document.getElementById('clicked_button');
+
+    // イベントデリゲーションを使用してクリックイベントを処理
+    clickedButtonContainer.addEventListener('click', function(event) {
+        // クリックされた要素が <li> 要素かどうかを確認
+        const liElement = event.target.closest('li');
+        if (liElement) {
+            // <li> 要素内のテキストを取得
+            const textContent = Array.from(liElement.childNodes)
+                                     .filter(node => node.nodeType === Node.TEXT_NODE)
+                                     .map(node => node.textContent.trim())
+                                     .join(' ');
+            //console.log(textContent); // クリックされた <li> 要素のテキストを表示
+            liElement.remove();
+
+            tmp = [];
+            for(i = 0; i < created_sentence.length; i++){
+                if(created_sentence[i] !== textContent){
+                    tmp.push(created_sentence[i]);
+                }
+            }
+            created_sentence = tmp;
+            //console.log("created_sentence:" + created_sentence);成功
         }
     });
-*/}
-    const b_text = obj.textContent;
-    console.log(b_text);//b_textが取得できていない
-    console.log(obj);
-
-    //var newArray = created_sentence.filter(t => t !== b_text);
-    //created_sentence = newArray;
-    var tmp = [];
-    for(var i = 0; i < created_sentence.length; i++){
-        if(created_sentence[i] !== b_text){
-            tmp.push(created_sentence[i]);
-        }
-    }
-    created_sentence = tmp;
-    //console.log(created_sentence);//for test
-
-    event.target.closest('li').remove();//event.target
-};
+});

@@ -110,7 +110,7 @@ export function CreateMessageSelect() {
       />
       <div>
         <div id = "clicked_button">
-          <ul class={selectedStyle} id="c_button" onclick="senntaku_kaizyo(this)">
+          <ul class={selectedStyle} id="c_button">
             {/*
             <li>
               あなたを守りたい

@@ -1,4 +1,4 @@
-import { type Context, Hono } from "@hono/hono";
+import { Hono } from "@hono/hono";
 export type { Hono };
 import { logger } from "@hono/hono/logger";
 import { serveStatic } from "@hono/hono/deno";

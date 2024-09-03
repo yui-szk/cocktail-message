@@ -4,6 +4,10 @@ import { CreateMessageTop } from "./CreateMessageTop.tsx";
 import { CreateMessageSelect } from "./CreateMessageSelect.tsx";
 import { CreateMessageCheck } from "./CreateMessageCheck.tsx";
 
+/**
+ * メッセージ作成画面のルーティング
+ */
+
 export const createMessage = new Hono();
 
 createMessage

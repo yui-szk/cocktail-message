@@ -1,7 +1,7 @@
 import { html } from "@hono/hono/html";
 
 /**
- * @function
+ * HTMLを返す
  */
 
 export const HTML = ({ children }: { children: unknown }) => {

@@ -1,7 +1,7 @@
 import { WithHTML } from "../layout/WithHTML.tsx";
 
 /**
- * @function
+ * ホーム画面を返す
  */
 
 export const Home = () => {

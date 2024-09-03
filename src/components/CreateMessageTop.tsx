@@ -28,7 +28,7 @@ const buttonStyle = css`
 `;
 
 /**
- * @function
+ * メッセージ作成のトップ画面を返す関数
  */
 
 export const CreateMessageTop = () => {

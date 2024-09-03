@@ -34,7 +34,7 @@ const layoutStyle = css`
 `;
 
 /**
- * @function
+ * HTMLを返す
  */
 
 export const WithHTML = ({ children }: { children: unknown }) => {

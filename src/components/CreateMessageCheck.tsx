@@ -54,7 +54,7 @@ const sendButtonStyle = css`
 `;
 
 /**
- * @function
+ * 作成したメッセージを確認する画面を返す関数
  */
 
 export const CreateMessageCheck = () => {
@@ -64,13 +64,13 @@ export const CreateMessageCheck = () => {
         <div class={imageStyle}>
           <img src="../images/empty-glass.png" alt="empty glass" />
         </div>
-        <div class={messageStyle}>
+        {/* <div class={messageStyle}>
           <p>
             あなたを
             <br />
             守りたい
           </p>
-        </div>
+        </div> */}
         <div class={buttonStyle}>
           <a href="/create/select">
             気持ちを
@@ -78,13 +78,13 @@ export const CreateMessageCheck = () => {
             追加する
           </a>
         </div>
-        <div class={cx(buttonStyle, sendButtonStyle)}>
+        {/* <div class={cx(buttonStyle, sendButtonStyle)}>
           <a href="/create/check">
             気持ちを
             <br />
             送る
           </a>
-        </div>
+        </div> */}
       </div>
     </WithHTML>
   );

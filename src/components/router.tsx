@@ -16,4 +16,4 @@ createMessage
   .get("/create/check", (ctx) => {
     return ctx.html(<CreateMessageCheck />);
   })
-  .use("images/*", serveStatic({ root: "/public/" }));
+  .use("/public/*", serveStatic({ root: "./" }));

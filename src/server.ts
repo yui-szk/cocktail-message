@@ -2,7 +2,7 @@ import { type Context, Hono } from "@hono/hono";
 export type { Hono };
 import { logger } from "@hono/hono/logger";
 
-import { createMessage } from "../../frontend/src/components/router.tsx";
+import { createMessage } from "./components/router.tsx";
 import { app as api } from "./api/mod.ts";
 
 /**

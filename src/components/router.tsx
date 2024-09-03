@@ -7,13 +7,13 @@ import { CreateMessageCheck } from "./CreateMessageCheck.tsx";
 export const createMessage = new Hono();
 
 createMessage
-  .get("/create", (ctx) => {
+  .get("/", (ctx) => {
     return ctx.html(<CreateMessageTop />);
   })
-  .get("/create/select", (ctx) => {
+  .get("/select", (ctx) => {
     return ctx.html(<CreateMessageSelect />);
   })
-  .get("/create/check", (ctx) => {
+  .get("/check", (ctx) => {
     return ctx.html(<CreateMessageCheck />);
   })
-  .use("images/*", serveStatic({ root: "/frontend/src" }));
+  .use("/public/*", serveStatic({ root: "./" }));

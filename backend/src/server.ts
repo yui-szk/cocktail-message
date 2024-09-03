@@ -2,7 +2,8 @@ import { type Context, Hono } from "@hono/hono";
 export type { Hono };
 import { logger } from "@hono/hono/logger";
 
-import { createMessage } from "./components/router.tsx";
+import { createMessage } from "../../frontend/src/components/router.tsx";
+
 import { app as api } from "./api/mod.ts";
 
 /**
@@ -16,7 +17,7 @@ import { app as api } from "./api/mod.ts";
 export const app: Hono = new Hono();
 app.use(logger());
 app
-  //.get("/", (ctx: Context) => ctx.text("Cocktail Message App"))
+  .get("/", (ctx: Context) => ctx.text("Cocktail Message App"))
   .route("/api", api)
   .route("/", createMessage);
 

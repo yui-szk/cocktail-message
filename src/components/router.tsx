@@ -1,5 +1,4 @@
 import { Hono } from "@hono/hono";
-import { serveStatic } from "@hono/hono/deno";
 import { CreateMessageTop } from "./CreateMessageTop.tsx";
 import { CreateMessageSelect } from "./CreateMessageSelect.tsx";
 import { CreateMessageCheck } from "./CreateMessageCheck.tsx";
@@ -19,5 +18,4 @@ createMessage
   })
   .get("/check", (ctx) => {
     return ctx.html(<CreateMessageCheck />);
-  })
-  .use("/public/*", serveStatic({ root: "./" }));
+  });

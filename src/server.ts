@@ -1,6 +1,7 @@
 import { type Context, Hono } from "@hono/hono";
 export type { Hono };
 import { logger } from "@hono/hono/logger";
+import { serveStatic } from "@hono/hono/deno";
 
 import { createMessage } from "./components/router.tsx";
 import { app as api } from "./api/mod.ts";
@@ -18,6 +19,7 @@ app.use(logger());
 app
   .get("/", (ctx: Context) => ctx.text("Cocktail Message App"))
   .route("/api", api)
-  .route("/create", createMessage);
+  .route("/create", createMessage)
+  .use("/public/*", serveStatic({ root: "./" }));
 
 Deno.serve(app.fetch);

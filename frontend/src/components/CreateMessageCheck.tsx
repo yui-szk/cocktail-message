@@ -1,5 +1,5 @@
 import { css, cx } from "@hono/hono/css";
-import { WithHTMX } from "../layout/WithHTMX.tsx";
+import { WithHTML } from "../layout/WithHTML.tsx";
 
 const imageStyle = css`
   height: 100vh;
@@ -22,7 +22,6 @@ const messageStyle = css`
 
   p {
     color: #000000;
-    /* text-align: center; */
   }
 `;
 
@@ -52,7 +51,7 @@ const sendButtonStyle = css`
 
 export function CreateMessageCheck() {
   return (
-    <WithHTMX>
+    <WithHTML>
       <div>
         <div class={imageStyle}>
           <img src="src/assets/images/empty-glass" alt="empty glass" />
@@ -79,6 +78,6 @@ export function CreateMessageCheck() {
           </a>
         </div>
       </div>
-    </WithHTMX>
+    </WithHTML>
   );
 }

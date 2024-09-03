@@ -1,5 +1,5 @@
 import { css } from "@hono/hono/css";
-import { WithHTMX } from "../layout/WithHTMX.tsx";
+import { WithHTML } from "../layout/WithHTML.tsx";
 
 const selectedStyle = css`
   height: 24vh;
@@ -97,7 +97,7 @@ const checkLinkStyle = css`
 
 export function CreateMessageSelect() {
   return (
-    <WithHTMX>
+    <WithHTML>
       <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
@@ -175,6 +175,6 @@ export function CreateMessageSelect() {
           </div>
         </div>
       </div>
-    </WithHTMX>
+    </WithHTML>
   );
 }

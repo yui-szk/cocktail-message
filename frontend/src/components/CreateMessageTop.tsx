@@ -1,5 +1,5 @@
 import { css } from "@hono/hono/css";
-import { WithHTMX } from "../layout/WithHTMX.tsx";
+import { WithHTML } from "../layout/WithHTML.tsx";
 
 const imageStyle = css`
   height: 100vh;
@@ -25,7 +25,7 @@ const buttonStyle = css`
 
 export function CreateMessageTop() {
   return (
-    <WithHTMX>
+    <WithHTML>
       <div>
         <div class={imageStyle}>
           <img src="src/assets/images/empty-glass" alt="empty glass" />
@@ -38,6 +38,6 @@ export function CreateMessageTop() {
           </a>
         </div>
       </div>
-    </WithHTMX>
+    </WithHTML>
   );
 }

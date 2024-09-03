@@ -33,7 +33,7 @@ const layoutStyle = css`
   }
 `;
 
-export function WithHTMX({ children }: { children: unknown }) {
+export function WithHTML({ children }: { children: unknown }) {
   return (
     <HTML>
       <head>

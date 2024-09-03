@@ -16,7 +16,7 @@ const layoutStyle = css`
       --color-stroke: #afafaf;
     }
     :root {
-      font-family: Noto-Sans;
+      font-family: "Noto Serif JP", serif;
       color: #ffffff;
       background-color: #443d3a;
     }

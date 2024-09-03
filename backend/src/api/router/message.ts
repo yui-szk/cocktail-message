@@ -8,6 +8,7 @@ import { parse } from "@valibot/valibot";
 import { Message } from "../utils/types.ts";
 export { Message };
 import { messages } from "../utils/data.ts";
+import { cocktailApi } from "./mod.ts";
 
 /**
  * The message API
@@ -55,12 +56,21 @@ app
   })
   .post(
     "/",
-    validator("json", (value: unknown, ctx: Context) => {
+    validator("json", async (value: unknown, ctx: Context) => {
       try {
-        return parse(Message, value);
+        const data: Message = parse(Message, value);
+        for (const cocktail of data.cocktails) {
+          const res: Response = await cocktailApi.request(
+            `/?name=${cocktail.name}`,
+          );
+          const result: { success: boolean; message: string } = await res
+            .json();
+          if (!result.success) throw new Error(result.message);
+        }
+        return data;
       } catch (error) {
         return ctx.json(
-          { success: false, message: error },
+          { success: false, message: error.message },
           STATUS_CODE.BadRequest,
         );
       }

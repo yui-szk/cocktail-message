@@ -53,6 +53,17 @@ Content-Type: application/json
 
 {
   "cocktails": [
+    { "name": "not-found" }
+  ]
+}
+
+###
+
+POST http://localhost:8000/api/message
+Content-Type: application/json
+
+{
+  "cocktails": [
     { "name": "アイリッシュコーヒー" },
     { "name": "アイ・オープナー" }
   ]

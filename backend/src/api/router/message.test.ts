@@ -62,6 +62,20 @@ Deno.test("Message API", async (t: Deno.TestContext) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         cocktails: [
+          { name: "not-found" },
+        ],
+      }),
+    });
+
+    assertEquals((await res.json()).success, false);
+    assertEquals(res.status, STATUS_CODE.BadRequest);
+  });
+  await t.step("POST /", async () => {
+    const res: Response = await app.request("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        cocktails: [
           { name: "アイリッシュコーヒー" },
           { name: "アイ・オープナー" },
         ],

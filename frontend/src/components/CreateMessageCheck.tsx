@@ -8,6 +8,24 @@ const imageStyle = css`
   align-items: center;
 `;
 
+const messageStyle = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: #eadf4a;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 100%;
+  left: 2rem;
+  top: 18rem;
+
+  p {
+    color: #000000;
+    /* text-align: center; */
+  }
+`;
+
 const buttonStyle = css`
   position: absolute;
   bottom: 4rem;
@@ -38,6 +56,13 @@ export function CreateMessageCheck() {
       <div>
         <div class={imageStyle}>
           <img src="src/assets/images/empty-glass" alt="empty glass" />
+        </div>
+        <div class={messageStyle}>
+          <p>
+            あなたを
+            <br />
+            守りたい
+          </p>
         </div>
         <div class={buttonStyle}>
           <a href="/create/select">

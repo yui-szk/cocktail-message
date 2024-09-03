@@ -1,14 +1,14 @@
 import { Context } from "@hono/hono";
 import { css } from "@hono/hono/css";
-import { WithHTMX } from "../layout/WithHTMX.tsx";
+import { WithHTML } from "../layout/WithHTML.tsx";
 
 const style = css``;
 
 export function Home() {
   return (
-    <WithHTMX>
+    <WithHTML>
       <section id="Home" class={style}></section>
-    </WithHTMX>
+    </WithHTML>
   );
 }
 

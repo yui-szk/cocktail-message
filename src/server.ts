@@ -17,8 +17,8 @@ import { app as api } from "./api/mod.ts";
 export const app: Hono = new Hono();
 app.use(logger());
 app
-  .route("/api", api)
   .route("/", createMessage)
+  .route("/api", api)
   .use("/public/*", serveStatic({ root: "./" }));
 
 Deno.serve(app.fetch);

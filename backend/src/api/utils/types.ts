@@ -36,7 +36,7 @@ export type Cocktail = InferOutput<typeof Cocktail>;
 export const Message = strictObject({
   id: optional(pipe(string(), uuid(), trim(), nonEmpty())),
   date: optional(date()),
-  cocktails: array(pick(Cocktail, ["name"])),
+  cocktails: pipe(array(pick(Cocktail, ["name"])), nonEmpty()),
 });
 
 /**

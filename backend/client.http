@@ -43,9 +43,7 @@ POST http://localhost:8000/api/message
 Content-Type: application/json
 
 {
-  "cocktails": [
-    "none"
-  ]
+  "cocktails": []
 }
 
 ###

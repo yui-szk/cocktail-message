@@ -48,7 +48,7 @@ Deno.test("Message API", async (t: Deno.TestContext) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        cocktails: ["none"],
+        cocktails: [],
       }),
     });
 

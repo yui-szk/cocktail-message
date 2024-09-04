@@ -1,4 +1,3 @@
-//tmp_list = ['apple', 'orange', 'grape', 'strawberry', 'apples'];//テスト用
 let created_sentence = [];
 
 const container = document.getElementById('container');
@@ -93,7 +92,6 @@ function kennsaku_show() {
                 text2 += node.textContent.trim();
             }
         });
-        //console.log(text2);//for test
 
         if (text2.includes(search_kekka)) {
             li.style.display = ''; // 検索文字列を含む場合は表示
@@ -104,7 +102,7 @@ function kennsaku_show() {
 };
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     // clicked_button 内のすべての <li> 要素を取得
     const clickedButtonContainer = document.getElementById('clicked_button');
 
@@ -118,7 +116,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                      .filter(node => node.nodeType === Node.TEXT_NODE)
                                      .map(node => node.textContent.trim())
                                      .join(' ');
-            //console.log(textContent); // クリックされた <li> 要素のテキストを表示
             liElement.remove();
 
             tmp = [];
@@ -128,7 +125,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
             created_sentence = tmp;
-            //console.log("created_sentence:" + created_sentence);成功
         }
     });
 });

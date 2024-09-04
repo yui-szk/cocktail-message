@@ -4,7 +4,7 @@ import { STATUS_CODE } from "@std/http/status";
 
 import { Cocktail } from "../utils/types.ts";
 export { Cocktail };
-import { cocktails } from "../utils/data.ts";
+import { getCocktails } from "../utils/data.ts";
 
 /**
  * The cocktail API
@@ -20,17 +20,17 @@ import { cocktails } from "../utils/data.ts";
  * ```
  */
 export const app = new Hono()
-  .get("/", (ctx: Context) => {
+  .get("/", async (ctx: Context) => {
     const name: string | undefined = ctx.req.query("name");
     if (!name) {
       return ctx.text('The "name" query is required', STATUS_CODE.BadRequest);
     }
 
-    const cocktail: Cocktail | undefined = cocktails.find((c: Cocktail) =>
-      c.name === name
-    );
+    const cocktail: Cocktail | undefined = (await getCocktails()).find((
+      c: Cocktail,
+    ) => c.name === name);
     return cocktail
       ? ctx.json(cocktail)
       : ctx.text(`The cocktail, "${name}" not found`, STATUS_CODE.NotFound);
   })
-  .get("/all", (ctx: Context) => ctx.json(cocktails));
+  .get("/all", async (ctx: Context) => ctx.json(await getCocktails()));

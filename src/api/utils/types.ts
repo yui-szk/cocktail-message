@@ -12,7 +12,6 @@ import {
   strictObject,
   string,
   trim,
-  uuid,
 } from "@valibot/valibot";
 export type { InferOutput, strictObject };
 
@@ -47,7 +46,6 @@ export type CocktailName = InferOutput<typeof CocktailName>;
  * @internal
  */
 export const Message = strictObject({
-  id: optional(pipe(string(), uuid(), trim(), nonEmpty())),
   date: optional(date()),
   cocktails: pipe(
     array(CocktailName),

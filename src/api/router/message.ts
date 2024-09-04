@@ -7,7 +7,7 @@ import { parse } from "@valibot/valibot";
 
 import { Message } from "../utils/types.ts";
 export { Message };
-import { messages } from "../utils/data.ts";
+import { getMessage, saveMessage } from "../utils/data.ts";
 import { cocktailApi } from "./mod.ts";
 
 /**
@@ -37,18 +37,18 @@ import { cocktailApi } from "./mod.ts";
  * ```
  */
 export const app = new Hono()
-  .get("/", (ctx: Context) => {
+  .get("/", async (ctx: Context) => {
     const id: string | undefined = ctx.req.query("id");
     if (!id) {
       return ctx.text('The "id" query is required', STATUS_CODE.BadRequest);
     }
 
-    const message: Message | undefined = messages.find((m: Message) =>
-      m.id === id
-    );
-    return message
-      ? ctx.json(message)
-      : ctx.text(`The message, "${id}" not found`, STATUS_CODE.NotFound);
+    try {
+      const message: Message = await getMessage(id);
+      return ctx.json(message);
+    } catch (error) {
+      return ctx.text(error, STATUS_CODE.NotFound);
+    }
   })
   .post(
     "/",
@@ -67,10 +67,13 @@ export const app = new Hono()
       }
     }),
     async (ctx: Context) => {
-      const data: Message = await ctx.req.json();
-      const id: string = crypto.randomUUID();
-      messages.push({ ...data, id, date: new Date() });
-      return ctx.text(id);
+      try {
+        const data: Message = await ctx.req.json();
+        const id: string = crypto.randomUUID();
+        await saveMessage({ ...data, date: new Date() }, id);
+        return ctx.text(id);
+      } catch (error) {
+        return ctx.text(error, STATUS_CODE.InternalServerError);
+      }
     },
-  )
-  .get("/all", (ctx: Context) => ctx.json(messages));
+  );

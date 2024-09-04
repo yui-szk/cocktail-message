@@ -72,5 +72,4 @@ export const app = new Hono()
       messages.push({ ...data, id, date: new Date() });
       return ctx.text(id);
     },
-  )
-  .get("/all", (ctx: Context) => ctx.json(messages));
+  );

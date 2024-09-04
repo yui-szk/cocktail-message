@@ -113,11 +113,4 @@ Deno.test("Message API", async (t: Deno.TestContext) => {
     assertExists(await res.text());
     assertEquals(res.status, STATUS_CODE.OK);
   });
-
-  await t.step("GET /all", async () => {
-    const res: Response = await app.request("/all");
-
-    assertExists(await res.json());
-    assertEquals(res.status, STATUS_CODE.OK);
-  });
 });

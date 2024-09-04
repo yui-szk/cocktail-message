@@ -1,5 +1,6 @@
 import { css, cx } from "@hono/hono/css";
 import { WithHTML } from "../layout/WithHTML.tsx";
+import { CocktailGlass } from "./CocktailGlass.tsx";
 
 const imageStyle = css`
   height: 70vh;
@@ -66,7 +67,7 @@ export const CreateMessageCheck = () => {
     <WithHTML>
       <div>
         <div class={imageStyle}>
-          <img src="/public/images/empty-glass.png" alt="empty glass" />
+          <CocktailGlass />
         </div>
         <div class={messageStyle}>
           <p>

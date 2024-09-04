@@ -34,13 +34,11 @@ Deno.test("Message API", async (t: Deno.TestContext) => {
     const res: Response = await app.request(`/?id=${id}`);
 
     assertEquals(await res.json(), {
-      message: {
-        date: "2020-01-01T00:00:00.000Z",
-        cocktails: [
-          { "name": "アイリッシュコーヒー" },
-          { "name": "アイ・オープナー" },
-        ],
-      },
+      date: "2020-01-01T00:00:00.000Z",
+      cocktails: [
+        { "name": "アイリッシュコーヒー" },
+        { "name": "アイ・オープナー" },
+      ],
     });
     assertEquals(res.status, STATUS_CODE.OK);
   });

@@ -30,10 +30,13 @@ export async function getCocktails(): Promise<Cocktail[]> {
  */
 export async function getMessage(id: string): Promise<Message> {
   const kv = await Deno.openKv();
-  const result: Deno.KvEntryMaybe<Message> = await kv.get(["messages", id]);
+  const result: Deno.KvEntryMaybe<{ message: Message }> = await kv.get([
+    "messages",
+    id,
+  ]);
   kv.close();
   if (!result.value) throw new Error("Failed to get messages");
-  return result.value;
+  return result.value.message;
 }
 
 /**

@@ -132,7 +132,9 @@ export function CreateMessageSelect() {
           <div>
             <form action="">
               <input type="text" value ="" id="kennsaku" placeholder="ここに検索したい語句を入力してください" oninput="kennsaku_show()"/>
+              <button type="submit">
                 <span class="material-symbols-outlined">search</span>
+              </button>
             </form>
           </div>
           {/*<button id="kennsaku_result">*/}

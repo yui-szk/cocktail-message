@@ -11,11 +11,33 @@ window.addEventListener('load', (event) => {
                 throw new Error('Network response was not ok');
             }
             //return response.json(); // JSON形式のレスポンスをパース
-            console.log(response);
+            //console.log(response);
         })
         .then(data => {
             console.log('Received data:', data); // 取得したデータをコンソールに出力
             // ここで、データを使った他の処理を実行することができます
+            const ul = document.getElementById('kensaku_result');
+            
+            for(i = 0; i < data.length; i++){
+                // li 要素を作成
+                const li = document.createElement('li');
+                
+                // li 要素に onclick イベントを追加
+                li.setAttribute('onclick', 'buttonclick(this)');
+                
+                // li のテキストコンテンツを追加
+                li.textContent = data[i].word;
+                
+                // small 要素を作成してテキストを追加
+                const small = document.createElement('small');
+                small.textContent = data[i].name;
+                
+                // li に small 要素を追加
+                li.appendChild(small);
+                
+                // ul に li 要素を追加
+                ul.appendChild(li);
+            }
         })
         .catch(error => {
             console.error('Error fetching data:', error); // エラーハンドリング
@@ -56,17 +78,6 @@ function buttonclick(obj){
         const ul = document.querySelector('#clicked_button ul');
         ul.appendChild(newLi);
     }
-}
-
-function updatecontainersize(){
-    var buttonstyle = window.getComputedStyle(document.getElementById('button'), '');
-    const height = buttonstyle.getPropertyValue('height');
-    const width = buttonstyle.getPropertyValue('width');
-    const gap = buttonstyle.getPropertyValue('gap');
-    const num = container.querySelectorAll('button');//ボタンの数
-
-    const height2 = num * (height + gap) - gap;
-    container.style.height = height2;
 }
 
 

@@ -14,7 +14,8 @@ const selectedStyle = css`
     color: var(--color-main);
     padding: 0.25rem 0.75rem;
     margin: 0.5rem 0;
-    border-radius: 0.5rem;
+    border-radius: 2rem;
+    align-items: center;
     flex-wrap: wrap;
 
     button {
@@ -177,7 +178,7 @@ export function CreateMessageSelect() {
             </ul>
           {/*</button>*/}
           <div class={checkLinkStyle}>
-            <a href="/create/check">確認</a>
+            <a href="./check">確認</a>
           </div>
         </div>
       </div>

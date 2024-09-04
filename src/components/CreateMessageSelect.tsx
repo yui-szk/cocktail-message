@@ -112,20 +112,6 @@ export function CreateMessageSelect() {
       <div>
         <div id = "clicked_button">
           <ul class={selectedStyle} id="c_button">
-            {/*
-            <li>
-              あなたを守りたい
-              <button>
-                <span class="material-symbols-outlined">close</span>
-              </button>
-            </li>
-            <li>
-              いつも2人で
-              <button>
-                <span class="material-symbols-outlined">close</span>
-              </button>
-            </li>
-            */}
           </ul>
         </div>
         <div class={wordListContainerStyle}>
@@ -137,7 +123,6 @@ export function CreateMessageSelect() {
               </button>
             </form>
           </div>
-          {/*<button id="kennsaku_result">*/}
             <ul class={wordListStyle} id="kennsaku_result">
               <li onclick="buttonclick(this)">
                 あなたを守りたい<small>ブルドッグ</small>
@@ -176,7 +161,6 @@ export function CreateMessageSelect() {
                 秘密<small>シンガポール・スリング</small>
               </li>
             </ul>
-          {/*</button>*/}
           <div class={checkLinkStyle}>
             <a href="./check">確認</a>
           </div>

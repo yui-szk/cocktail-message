@@ -27,34 +27,34 @@ export function CocktailGlass() {
               .cls-3 {
                 fill: #efefef;
               }
-  
+
               .cls-3 {
                 opacity: 0.3;
               }
-  
+
               .cls-5 {
                 fill: #dcdddd;
               }
-  
+
               .cls-7 {
                 opacity: 0.85;
               }
-  
+
               .cls-8 {
                 opacity: 0.2;
               }
-  
+
               .cls-10 {
                 stroke-linejoin: round;
               }
-  
+
               .cls-10,
               .cls-11 {
                 fill: none;
                 stroke: #dcdddd;
                 stroke-width: 10px;
               }
-  
+
               .cls-11 {
                 stroke-linecap: round;
                 stroke-miterlimit: 10;

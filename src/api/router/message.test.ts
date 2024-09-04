@@ -45,7 +45,7 @@ Deno.test("Message API", async (t: Deno.TestContext) => {
     assertEquals(res.status, STATUS_CODE.OK);
   });
 
-  await t.step("POST /", async () => {
+  await t.step("POST / (empty items)", async () => {
     const res: Response = await app.request("/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -88,7 +88,10 @@ Deno.test("Message API", async (t: Deno.TestContext) => {
       }),
     });
 
-    assertExists(await res.text());
+    assertEquals(
+      await res.text(),
+      "Invalid length: Expected <=4 but received 5",
+    );
     assertEquals(res.status, STATUS_CODE.BadRequest);
   });
 
@@ -105,7 +108,7 @@ Deno.test("Message API", async (t: Deno.TestContext) => {
       }),
     });
 
-    assertExists(await res.text());
+    assertEquals(await res.text(), "Invalid items: No duplicate names allowed");
     assertEquals(res.status, STATUS_CODE.BadRequest);
   });
 

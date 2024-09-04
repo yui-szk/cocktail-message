@@ -3,15 +3,13 @@ import { WithHTML } from "../layout/WithHTML.tsx";
 import { CocktailGlass } from "./CocktailGlass.tsx";
 
 const imageStyle = css`
-  height: 70vh;
+  height: 75vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin: 1rem 0;
 
-  img {
-    min-width: 24rem;
-    width: 27rem;
+  svg {
+    height: calc(100% - 9rem);
+    margin-top: 4rem;
   }
 `;
 
@@ -20,11 +18,10 @@ const messageContainerStyle = css`
   grid-template-columns: 7rem 1fr 7rem;
   grid-template-rows: 20% 20% 20% 20% 20%;
   position: absolute;
-  top: 1rem;
-  height: 70vh;
+  top: 0;
+  height: 75vh;
   width: calc(100% - 3.5rem);
   max-width: 430px;
-  padding: 3rem 0;
 
   #grid-item-1 {
     grid-area: 1 / 1 / 2 / 1;
@@ -56,7 +53,7 @@ const messageStyle = css`
   align-items: center;
 
   p {
-    color: #000000;
+    color: var(--color-black);
   }
 `;
 
@@ -91,7 +88,7 @@ const sendButtonStyle = css`
 `;
 
 /**
- * 作成したメッセージを確認する画面を返す関数
+ * 作成したメッセージを確認する画面を返す
  */
 
 export const CreateMessageCheck = () => {

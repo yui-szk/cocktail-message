@@ -6,21 +6,53 @@ const imageStyle = css`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 1rem 0;
 
   img {
-    width: 24rem;
+    min-width: 24rem;
+    width: 27rem;
+  }
+`;
+
+const messageContainerStyle = css`
+  display: grid;
+  grid-template-columns: 7rem 1fr 7rem;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+  position: absolute;
+  top: 1rem;
+  height: 70vh;
+  width: calc(100% - 3.5rem);
+  max-width: 430px;
+  padding: 3rem 0;
+
+  #grid-item-1 {
+    grid-area: 1 / 1 / 2 / 1;
+  }
+
+  #grid-item-2 {
+    grid-area: 2 / 3 / 3 / 3;
+    justify-self: right;
+  }
+
+  #grid-item-3 {
+    grid-area: 3 / 1 / 4 / 1;
+  }
+
+  #grid-item-4 {
+    grid-area: 4 / 3 / 5 / 3;
+    justify-self: right;
   }
 `;
 
 const messageStyle = css`
+  background-color: #eadf4a;
+  min-width: 7rem;
+  min-height: 7rem;
+  border-radius: 100%;
+  margin-top: 2.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  background-color: #eadf4a;
-  width: 7rem;
-  height: 7rem;
-  border-radius: 100%;
 
   p {
     color: #000000;
@@ -68,13 +100,37 @@ export const CreateMessageCheck = () => {
         <div class={imageStyle}>
           <img src="/public/images/empty-glass.png" alt="empty glass" />
         </div>
-        <div class={messageStyle}>
-          <p>
-            あなたを
-            <br />
-            守りたい
-          </p>
+        <div class={messageContainerStyle}>
+          <div class={messageStyle} id="grid-item-1">
+            <p>
+              あなたを
+              <br />
+              守りたい
+            </p>
+          </div>
+          <div class={messageStyle} id="grid-item-2">
+            <p>
+              あなたを
+              <br />
+              守りたい
+            </p>
+          </div>
+          <div class={messageStyle} id="grid-item-3">
+            <p>
+              あなたを
+              <br />
+              守りたい
+            </p>
+          </div>
+          <div class={messageStyle} id="grid-item-4">
+            <p>
+              あなたを
+              <br />
+              守りたい
+            </p>
+          </div>
         </div>
+
         <div class={buttonContainerStyle}>
           <div class={buttonStyle}>
             <a href="./select">

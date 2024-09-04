@@ -65,6 +65,34 @@ Content-Type: application/json
 {
   "cocktails": [
     { "name": "アイリッシュコーヒー" },
+    { "name": "アイ・オープナー" },
+    { "name": "アクダクト" },
+    { "name": "アドニス" },
+    { "name": "アフィニティ" }
+  ]
+}
+
+###
+
+POST http://localhost:8000/api/message
+Content-Type: application/json
+
+{
+  "cocktails": [
+    { "name": "アイリッシュコーヒー" },
+    { "name": "アイリッシュコーヒー" },
+    { "name": "アイ・オープナー" }
+  ]
+}
+
+###
+
+POST http://localhost:8000/api/message
+Content-Type: application/json
+
+{
+  "cocktails": [
+    { "name": "アイリッシュコーヒー" },
     { "name": "アイ・オープナー" }
   ]
 }

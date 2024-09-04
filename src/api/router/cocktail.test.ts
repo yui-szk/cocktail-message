@@ -7,27 +7,21 @@ Deno.test("Cocktail API", async (t: Deno.TestContext) => {
   await t.step("GET /", async () => {
     const res: Response = await app.request("/");
 
-    assertEquals(await res.json(), {
-      success: false,
-      message: 'The "name" query is required',
-    });
+    assertEquals(await res.text(), 'The "name" query is required');
     assertEquals(res.status, STATUS_CODE.BadRequest);
   });
 
   await t.step("GET /?name=none", async () => {
     const res: Response = await app.request("/?name=none");
 
-    assertEquals(await res.json(), {
-      success: false,
-      message: 'The cocktail, "none" not found',
-    });
+    assertEquals(await res.text(), 'The cocktail, "none" not found');
     assertEquals(res.status, STATUS_CODE.NotFound);
   });
 
   await t.step("GET /?name=アイリッシュコーヒー", async () => {
     const res: Response = await app.request("/?name=アイリッシュコーヒー");
 
-    assertEquals((await res.json()).success, true);
+    assertExists(await res.json());
     assertEquals(res.status, STATUS_CODE.OK);
   });
 

@@ -5,12 +5,16 @@ on:
     branches:
       - main
     paths:
+      - "**.js"
       - "**.ts"
+      - "**.tsx"
       - deno.lock
       - .github/workflows/test.yml
   pull_request:
     paths:
+      - "**.js"
       - "**.ts"
+      - "**.tsx"
       - deno.lock
       - .github/workflows/test.yml
 

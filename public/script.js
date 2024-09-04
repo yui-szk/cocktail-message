@@ -2,7 +2,7 @@ let created_sentence = [];
 
 //const container = document.getElementById('container');
 
-window.addEventListener('load', (event) => {
+window.addEventListener('load', () => {
     // ウィンドウが読み込まれた時の処理
     fetch('/api/cocktail/all')
         .then(response => {

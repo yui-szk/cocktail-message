@@ -14,8 +14,8 @@ const selectedStyle = css`
     color: var(--color-main);
     padding: 0.25rem 0.75rem;
     margin: 0.5rem 0;
-    border-radius: 2rem;
-    align-items: center;
+    border-radius: 0.5rem;
+    flex-wrap: wrap;
 
     button {
       justify-self: end;
@@ -96,13 +96,10 @@ const checkLinkStyle = css`
   }
 `;
 
-/**
- * メッセージを選択する画面を返す関数
- */
-
-export const CreateMessageSelect = () => {
+export function CreateMessageSelect() {
   return (
     <WithHTML>
+      <script src="./public/script.js"></script>
       <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
@@ -112,8 +109,9 @@ export const CreateMessageSelect = () => {
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
       />
       <div>
-        <div>
-          <ul class={selectedStyle}>
+        <div id = "clicked_button">
+          <ul class={selectedStyle} id="c_button">
+            {/*
             <li>
               あなたを守りたい
               <button>
@@ -126,60 +124,63 @@ export const CreateMessageSelect = () => {
                 <span class="material-symbols-outlined">close</span>
               </button>
             </li>
+            */}
           </ul>
         </div>
         <div class={wordListContainerStyle}>
           <div>
             <form action="">
-              <input type="text" />
-              <button type="submit">
+              <input type="text" value ="" id="kennsaku" placeholder="ここに検索したい語句を入力してください" oninput="kennsaku_show()"/>
+              <button type="submit" id="kennsaku_submit">
                 <span class="material-symbols-outlined">search</span>
               </button>
             </form>
           </div>
-          <ul class={wordListStyle}>
-            <li>
-              あなたを守りたい<small>ブルドッグ</small>
-            </li>
-            <li>
-              いつも2人で<small>サイドカー</small>
-            </li>
-            <li>
-              正しき心<small>ジンバッグ</small>
-            </li>
-            <li>
-              素晴らしい<small>アプリコット・クーラー</small>
-            </li>
-            <li>
-              冒険<small>アラウンド・ザ・ワールド</small>
-            </li>
-            <li>
-              偽りなき心<small>アラスカ</small>
-            </li>
-            <li>
-              幸せいっぱい<small>ウエディング・ベル</small>
-            </li>
-            <li>
-              晴れやかな心で<small>エバー・グリーン</small>
-            </li>
-            <li>
-              あなたに会いたい<small>ケーブルグラム</small>
-            </li>
-            <li>
-              華麗<small>コスモポリタン</small>
-            </li>
-            <li>
-              あるがままに<small>ジン・フィズ</small>
-            </li>
-            <li>
-              秘密<small>シンガポール・スリング</small>
-            </li>
-          </ul>
+          {/*<button id="kennsaku_result">*/}
+            <ul class={wordListStyle} id="kennsaku_result">
+              <li onclick="buttonclick(this)">
+                あなたを守りたい<small>ブルドッグ</small>
+              </li>
+              <li onclick="buttonclick(this)">
+                いつも2人で<small>サイドカー</small>
+              </li>
+              <li onclick="buttonclick(this)">
+                正しき心<small>ジンバッグ</small>
+              </li>
+              <li onclick="buttonclick(this)">
+                素晴らしい<small>アプリコット・クーラー</small>
+              </li>
+              <li onclick="buttonclick(this)">
+                冒険<small>アラウンド・ザ・ワールド</small>
+              </li>
+              <li onclick="buttonclick(this)">
+                偽りなき心<small>アラスカ</small>
+              </li>
+              <li onclick="buttonclick(this)">
+                幸せいっぱい<small>ウエディング・ベル</small>
+              </li>
+              <li onclick="buttonclick(this)">
+                晴れやかな心で<small>エバー・グリーン</small>
+              </li>
+              <li onclick="buttonclick(this)">
+                あなたに会いたい<small>ケーブルグラム</small>
+              </li>
+              <li onclick="buttonclick(this)">
+                華麗<small>コスモポリタン</small>
+              </li>
+              <li onclick="buttonclick(this)">
+                あるがままに<small>ジン・フィズ</small>
+              </li>
+              <li onclick="buttonclick(this)">
+                秘密<small>シンガポール・スリング</small>
+              </li>
+            </ul>
+          {/*</button>*/}
           <div class={checkLinkStyle}>
-            <a href="./check">確認</a>
+            <a href="/create/check">確認</a>
           </div>
         </div>
       </div>
     </WithHTML>
   );
-};
+}

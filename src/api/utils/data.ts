@@ -2,28 +2,33 @@ import { parse } from "@std/jsonc";
 
 import type { Cocktail, Message } from "./types.ts";
 
-const cocktailFile = "./private/cocktails.jsonc";
-const cocktailData: string = await Deno.readTextFile(cocktailFile);
-
 /**
- * An array of cocktails data
+ * Returns an array of cocktails data
+ * @returns The array of cocktails data
  *
  * @example
  * ```ts
- * console.log(cocktails);
+ * const cocktails: Cocktail[] = await getCocktails();
  * ```
  */
-export const cocktails: Cocktail[] = parse(cocktailData) as Cocktail[];
-
-const messageFile = "./private/messages.jsonc";
-const messageData: string = await Deno.readTextFile(messageFile);
+export async function getCocktails(): Promise<Cocktail[]> {
+  const file = "./private/cocktails.jsonc";
+  const data: string = await Deno.readTextFile(file);
+  return parse(data) as Cocktail[];
+}
 
 /**
- * An array of messages data
+ * Returns an array of messages data
+ * @param The id of the message
+ * @returns The message data
  *
  * @example
  * ```ts
- * console.log(messages);
+ * const message: Message[] = await getMessages();
  * ```
  */
-export const messages: Message[] = parse(messageData) as unknown as Message[];
+export async function getMessages(): Promise<Message[]> {
+  const file = "./private/messages.jsonc";
+  const data: string = await Deno.readTextFile(file);
+  return parse(data) as unknown as Message[];
+}

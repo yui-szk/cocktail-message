@@ -45,10 +45,9 @@ function buttonclick(obj){
 
     if (document.getElementById("c_button").childElementCount >= 4) {
         alert("これ以上言葉を追加できません");
-    } else if (!created_sentence.includes(selectedCocktailMessage)) {
-        created_sentence.push(selectedCocktailMessage);
 
-        //console.log(created_sentence);//fortest
+    }else if(!created_sentence.includes(selectedCocktailMessage)){
+        created_sentence.push(selectedCocktailMessage);
 
         const newLi = document.createElement("li");
         newLi.textContent = selectedCocktailMessage;

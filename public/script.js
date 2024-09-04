@@ -42,11 +42,10 @@ function buttonclick(obj){
     const selectedCocktailMessage = text;//クリックしたボタンの文字
 
 
-    if(created_sentence.includes(selectedCocktailMessage)){
-        //nothing
-    }else if(document.getElementById("c_button").childElementCount >= 4){//配列の要素で判定
+
+    if (document.getElementById("c_button").childElementCount >= 4) {
         alert("これ以上言葉を追加できません");
-    }else{
+    } else if (!created_sentence.includes(selectedCocktailMessage)) {
         created_sentence.push(selectedCocktailMessage);
 
         //console.log(created_sentence);//fortest

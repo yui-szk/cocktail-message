@@ -1,7 +1,5 @@
 let created_sentence = [];
 
-//const container = document.getElementById('container');
-
 window.addEventListener('load', () => {
     // ウィンドウが読み込まれた時の処理
     fetch('/api/cocktail/all')
@@ -9,6 +7,7 @@ window.addEventListener('load', () => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
+            return response.json();
         })
         .then(data => {
             console.log('Received data:', data); // 取得したデータをコンソールに出力
@@ -67,7 +66,6 @@ function buttonclick(obj){
 
 function kennsaku_show() {
     const search_kekka = document.getElementById("kennsaku").value;//検索文字列
-    //search_result.innerHTML = '';//検索表示箇所を空白にする
 
     const liElements = document.querySelectorAll("#kennsaku_result li");
     liElements.forEach(li => {

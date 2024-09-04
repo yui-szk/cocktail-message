@@ -18,17 +18,46 @@ export async function getCocktails(): Promise<Cocktail[]> {
 }
 
 /**
- * Returns an array of messages data
+ * Returns a message data
  * @param The id of the message
  * @returns The message data
  *
  * @example
  * ```ts
- * const message: Message[] = await getMessages();
+ * const id: string = "62095b31-b643-4566-9e69-7edc9c901fea";
+ * const message = await getMessage(id);
  * ```
  */
-export async function getMessages(): Promise<Message[]> {
-  const file = "./private/messages.jsonc";
-  const data: string = await Deno.readTextFile(file);
-  return parse(data) as unknown as Message[];
+export async function getMessage(id: string): Promise<Message> {
+  const kv = await Deno.openKv();
+  const result: Deno.KvEntryMaybe<Message> = await kv.get(["messages", id]);
+  kv.close();
+  if (!result.value) throw new Error("Failed to get messages");
+  return result.value;
+}
+
+/**
+ * Saves a message data
+ * @param The message to write
+ * @param The id of the message
+ *
+ * @example
+ * ```ts
+ * const message: Message = {
+ *   cocktails: [
+ *     { name: "アイリッシュコーヒー" },
+ *     { name: "アイ・オープナー" },
+ *   ],
+ * }];
+ * const id = "62095b31-b643-4566-9e69-7edc9c901fea";
+ * await saveMessage(message, id);
+ * ```
+ */
+export async function saveMessage(message: Message, id: string): Promise<void> {
+  const kv = await Deno.openKv();
+  const result: Deno.KvCommitResult = await kv.set(["messages", id], {
+    message,
+  });
+  kv.close();
+  if (!result) throw new Error("Failed to save message");
 }

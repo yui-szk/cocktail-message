@@ -4,6 +4,18 @@ import { STATUS_CODE } from "@std/http/status";
 import { app } from "./message.ts";
 
 Deno.test("Message API", async (t: Deno.TestContext) => {
+  const id = "62095b31-b643-4566-9e69-7edc9c901fea";
+  const kv = await Deno.openKv();
+  kv.set(["messages", id], {
+    message: {
+      date: "2020-01-01T00:00:00.000Z",
+      cocktails: [
+        { name: "アイリッシュコーヒー" },
+        { name: "アイ・オープナー" },
+      ],
+    },
+  });
+
   await t.step("GET /", async () => {
     const res: Response = await app.request("/");
 
@@ -14,22 +26,21 @@ Deno.test("Message API", async (t: Deno.TestContext) => {
   await t.step("GET /?id=none", async () => {
     const res: Response = await app.request("/?id=none");
 
-    assertEquals(await res.text(), 'The message, "none" not found');
+    assertEquals(await res.text(), "Error: Failed to get messages");
     assertEquals(res.status, STATUS_CODE.NotFound);
   });
 
-  await t.step("GET /?id=62095b31-b643-4566-9e69-7edc9c901fea", async () => {
-    const res: Response = await app.request(
-      "/?id=62095b31-b643-4566-9e69-7edc9c901fea",
-    );
+  await t.step(`GET /?id=${id}`, async () => {
+    const res: Response = await app.request(`/?id=${id}`);
 
     assertEquals(await res.json(), {
-      "id": "62095b31-b643-4566-9e69-7edc9c901fea",
-      "date": "2020-01-01T00:00:00.000Z",
-      "cocktails": [
-        { "name": "アイリッシュコーヒー" },
-        { "name": "アイ・オープナー" },
-      ],
+      message: {
+        date: "2020-01-01T00:00:00.000Z",
+        cocktails: [
+          { "name": "アイリッシュコーヒー" },
+          { "name": "アイ・オープナー" },
+        ],
+      },
     });
     assertEquals(res.status, STATUS_CODE.OK);
   });
@@ -113,4 +124,6 @@ Deno.test("Message API", async (t: Deno.TestContext) => {
     assertExists(await res.text());
     assertEquals(res.status, STATUS_CODE.OK);
   });
+
+  kv.close();
 });

@@ -40,19 +40,15 @@ export const app = new Hono()
   .get("/", (ctx: Context) => {
     const id: string | undefined = ctx.req.query("id");
     if (!id) {
-      return ctx.json(
-        { success: false, message: 'The "id" query is required' },
-        STATUS_CODE.BadRequest,
-      );
+      return ctx.text('The "id" query is required', STATUS_CODE.BadRequest);
     }
 
     const message: Message | undefined = messages.find((m: Message) =>
       m.id === id
     );
-    return message ? ctx.json({ success: true, data: message }) : ctx.json(
-      { success: false, message: `The message, "${id}" not found` },
-      STATUS_CODE.NotFound,
-    );
+    return message
+      ? ctx.json(message)
+      : ctx.text(`The message, "${id}" not found`, STATUS_CODE.NotFound);
   })
   .post(
     "/",
@@ -63,23 +59,18 @@ export const app = new Hono()
           const res: Response = await cocktailApi.request(
             `/?name=${cocktail.name}`,
           );
-          const result: { success: boolean; message: string } = await res
-            .json();
-          if (!result.success) throw new Error(result.message);
+          if (!res.ok) throw new Error(await res.json());
         }
         return data;
       } catch (error) {
-        return ctx.json(
-          { success: false, message: error.message },
-          STATUS_CODE.BadRequest,
-        );
+        return ctx.text(error.message, STATUS_CODE.BadRequest);
       }
     }),
     async (ctx: Context) => {
       const data: Message = await ctx.req.json();
       const id: string = crypto.randomUUID();
       messages.push({ ...data, id, date: new Date() });
-      return ctx.json({ success: true, data: id });
+      return ctx.text(id);
     },
   )
   .get("/all", (ctx: Context) => ctx.json(messages));

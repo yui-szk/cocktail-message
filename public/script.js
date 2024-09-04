@@ -79,11 +79,7 @@ function kennsaku_show() {
             }
         });
 
-        if (text2.includes(search_kekka)) {
-            li.style.display = ''; // 検索文字列を含む場合は表示
-        } else {
-            li.style.display = 'none'; // 含まない場合は非表示
-        }
+        li.style.display = text2.includes(search_kekka) ? "" : "none";
     });
 };
 

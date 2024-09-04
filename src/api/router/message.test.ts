@@ -47,13 +47,49 @@ Deno.test("Message API", async (t: Deno.TestContext) => {
     assertEquals(res.status, STATUS_CODE.BadRequest);
   });
 
-  await t.step("POST /", async () => {
+  await t.step("POST / (not found)", async () => {
     const res: Response = await app.request("/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         cocktails: [
           { name: "not-found" },
+        ],
+      }),
+    });
+
+    assertExists(await res.text());
+    assertEquals(res.status, STATUS_CODE.BadRequest);
+  });
+
+  await t.step("POST / (too many items)", async () => {
+    const res: Response = await app.request("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        cocktails: [
+          { "name": "アイリッシュコーヒー" },
+          { "name": "アイ・オープナー" },
+          { "name": "アクダクト" },
+          { "name": "アドニス" },
+          { "name": "アフィニティ" },
+        ],
+      }),
+    });
+
+    assertExists(await res.text());
+    assertEquals(res.status, STATUS_CODE.BadRequest);
+  });
+
+  await t.step("POST / (duplicate items)", async () => {
+    const res: Response = await app.request("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        cocktails: [
+          { name: "アイリッシュコーヒー" },
+          { name: "アイリッシュコーヒー" },
+          { name: "アイ・オープナー" },
         ],
       }),
     });

@@ -15,7 +15,7 @@ addEventListener("load", () => {
       const liElements = document.getElementById("kennsaku_result");
       for (i = 0; i < data.length; i++) {
         const li = document.createElement("li");
-        li.setAttribute("onclick", "buttonclick(this)");
+        li.setAttribute("onclick", "_buttonclick(this)");
         li.textContent = data[i].word;
 
         const small = document.createElement("small");
@@ -39,7 +39,7 @@ function _buttonclick(obj) {
   });
   const selectedCocktailMessage = text; //クリックしたボタンの文字
 
-  if (document.getElementById("selected_message_list").childElementCount >= 4) {
+  if (document.getElementById("selected_message_list").childElementCount > 4) {
     alert("これ以上言葉を追加できません");
   } else if (!created_sentence.includes(selectedCocktailMessage)) {
     created_sentence.push(selectedCocktailMessage);

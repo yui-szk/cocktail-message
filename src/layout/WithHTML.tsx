@@ -48,6 +48,8 @@ export const WithHTML = ({ children }: { children: unknown }) => {
       </head>
       <body class={layoutStyle}>
         <div class="content">{children}</div>
+        {"<!-- "}Twemoji Graphics licensed under CC-BY 4.0
+        https://github.com/twitter/twemoji/blob/d94f4cf/LICENSE-GRAPHICS{" -->"}
       </body>
     </HTML>
   );

@@ -1,7 +1,9 @@
 import { css, cx } from "@hono/hono/css";
 import { WithHTML } from "../layout/WithHTML.tsx";
 import { CocktailGlass } from "./CocktailGlass.tsx";
-import { getCocktail } from "./utils.ts";
+import { getCocktail, getMessage } from "./utils.ts";
+import { CocktailName } from "../api/utils/types.ts";
+import { type Context } from "@hono/hono";
 
 const imageStyle = css`
   height: 75vh;
@@ -95,19 +97,32 @@ const sendButtonStyle = css`
  * 作成したメッセージを確認する画面を返す
  */
 
-export const CreateMessageCheck = async () => {
-  const cocktailNames = [
-    "スパニッシュ・タウン",
-    "カンパリオレンジ",
-    "アクダクト",
-    "オレンジブロッサム",
-  ];
+export const CreateMessageCheck = async (ctx: Context) => {
+  const id: string = ctx.req.query("id") || "";
 
-  const cocktails = cocktailNames.map(async (name) => {
-    return await getCocktail(name);
-  });
-  const colors = [];
+  const cocktails = (await getMessage(id)).cocktails.map(
+    async (cocktailName: CocktailName) => {
+      return await getCocktail(cocktailName.name);
+    }
+  );
+
+  let colors = [];
   for await (const cocktail of cocktails) colors.push(cocktail.color);
+  switch (colors.length) {
+    case 1:
+      colors = [colors[0], colors[0], colors[0], colors[0]];
+      break;
+    case 2:
+      colors = [colors[0], ...colors, colors.at(-1)];
+      break;
+    case 3:
+      colors = [...colors, colors[colors.length - 1]];
+      break;
+    default:
+      colors;
+  }
+
+  console.log(colors);
 
   return (
     <WithHTML>
@@ -116,21 +131,23 @@ export const CreateMessageCheck = async () => {
           <CocktailGlass colors={colors} />
         </div>
         <div class={messageContainerStyle}>
-          {cocktails.map(async (cocktail, index) => {
-            return (
+          {(await getMessage(id)).cocktails.map(
+            async (cocktail: CocktailName, index: number) => (
               <div
                 class={messageStyle}
                 id={`grid-item-${index + 1}`}
                 style={
-                  (await cocktail).word
-                    ? `background-color: ${(await cocktail).color};`
+                  (await getCocktail(cocktail.name)).word
+                    ? `background-color: ${
+                        (await getCocktail(cocktail.name)).color
+                      };`
                     : "display: none"
                 }
               >
-                <p>{(await cocktail).word}</p>
+                <p>{(await getCocktail(cocktail.name)).word}</p>
               </div>
-            );
-          })}
+            )
+          )}
         </div>
         <div class={buttonContainerStyle}>
           <div class={buttonStyle}>

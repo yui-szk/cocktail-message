@@ -30,7 +30,7 @@ addEventListener("load", () => {
     });
 });
 
-function buttonclick(obj) {
+function _buttonclick(obj) {
   let text = "";
   obj.childNodes.forEach((node) => {
     if (node.nodeType === node.TEXT_NODE) {
@@ -59,7 +59,7 @@ function buttonclick(obj) {
   }
 }
 
-function kennsaku_show() {
+function _kennsaku_show() {
   const search_kekka = document.getElementById("kennsaku").value; //検索文字列
 
   const liElements = document.querySelectorAll("#kennsaku_result li");

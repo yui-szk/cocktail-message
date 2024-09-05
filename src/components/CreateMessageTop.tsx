@@ -1,5 +1,18 @@
-import { css } from "@hono/hono/css";
+import { css, keyframes } from "@hono/hono/css";
 import { WithHTML } from "../layout/WithHTML.tsx";
+
+const fadeIn = keyframes`  
+  from {
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+`;
+
+const fadeAnimation = css`
+  animation: ${fadeIn} 3s forwards;
+`;
 
 const imageStyle = css`
   height: 85vh;
@@ -34,7 +47,13 @@ const buttonStyle = css`
 export const CreateMessageTop = () => {
   return (
     <WithHTML>
-      <div>
+      <div class={fadeAnimation}>
+        <audio
+          id="ice-audio"
+          preload="auto"
+          autoplay
+          src="/public/audio/ice.mp3"
+        ></audio>
         <div class={imageStyle}>
           <img
             src="/public/images/cocktail-glass-empty.svg"

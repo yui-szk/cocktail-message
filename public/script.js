@@ -102,3 +102,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+function playIceAudio() {
+  const iceAudio = document.getElementById("ice-audio");
+  iceAudio.play();
+}

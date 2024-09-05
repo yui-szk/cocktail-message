@@ -125,7 +125,7 @@ export const CreateMessageSelect = () => {
                 value=""
                 id="kennsaku"
                 placeholder="ここに検索したい語句を入力してください"
-                oninput="kennsaku_show()"
+                oninput="_kennsaku_show()"
               />
               <button type="submit">
                 <span class="material-symbols-outlined">search</span>
@@ -133,40 +133,40 @@ export const CreateMessageSelect = () => {
             </form>
           </div>
           <ul class={wordListStyle} id="kennsaku_result">
-            <li onclick="buttonclick(this)">
+            <li onclick="_buttonclick(this)">
               あなたを守りたい<small>ブルドッグ</small>
             </li>
-            <li onclick="buttonclick(this)">
+            <li onclick="_buttonclick(this)">
               いつも2人で<small>サイドカー</small>
             </li>
-            <li onclick="buttonclick(this)">
+            <li onclick="_buttonclick(this)">
               正しき心<small>ジンバッグ</small>
             </li>
-            <li onclick="buttonclick(this)">
+            <li onclick="_buttonclick(this)">
               素晴らしい<small>アプリコット・クーラー</small>
             </li>
-            <li onclick="buttonclick(this)">
+            <li onclick="_buttonclick(this)">
               冒険<small>アラウンド・ザ・ワールド</small>
             </li>
-            <li onclick="buttonclick(this)">
+            <li onclick="_buttonclick(this)">
               偽りなき心<small>アラスカ</small>
             </li>
-            <li onclick="buttonclick(this)">
+            <li onclick="_buttonclick(this)">
               幸せいっぱい<small>ウエディング・ベル</small>
             </li>
-            <li onclick="buttonclick(this)">
+            <li onclick="_buttonclick(this)">
               晴れやかな心で<small>エバー・グリーン</small>
             </li>
-            <li onclick="buttonclick(this)">
+            <li onclick="_buttonclick(this)">
               あなたに会いたい<small>ケーブルグラム</small>
             </li>
-            <li onclick="buttonclick(this)">
+            <li onclick="_buttonclick(this)">
               華麗<small>コスモポリタン</small>
             </li>
-            <li onclick="buttonclick(this)">
+            <li onclick="_buttonclick(this)">
               あるがままに<small>ジン・フィズ</small>
             </li>
-            <li onclick="buttonclick(this)">
+            <li onclick="_buttonclick(this)">
               秘密<small>シンガポール・スリング</small>
             </li>
           </ul>

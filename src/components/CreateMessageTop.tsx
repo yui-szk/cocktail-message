@@ -2,13 +2,13 @@ import { css } from "@hono/hono/css";
 import { WithHTML } from "../layout/WithHTML.tsx";
 
 const imageStyle = css`
-  height: 90vh;
+  height: 85vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin-top: 3rem;
 
   img {
-    width: 24rem;
+    height: calc(100% - 11rem);
   }
 `;
 
@@ -36,7 +36,7 @@ export const CreateMessageTop = () => {
     <WithHTML>
       <div>
         <div class={imageStyle}>
-          <img src="/public/images/empty-glass.png" alt="empty glass" />
+          <img src="/public/images/cocktail-glass.svg" alt="empty glass" />
         </div>
         <div class={buttonStyle}>
           <a href="./select">

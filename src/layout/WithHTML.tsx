@@ -53,7 +53,6 @@ export const WithHTML = ({ children }: { children: unknown }) => {
         <div class="content">{children}</div>
         {"<!-- "}Twemoji Graphics licensed under CC-BY 4.0
         https://github.com/twitter/twemoji/blob/d94f4cf/LICENSE-GRAPHICS{" -->"}
-        <script src="./public/script.js"></script>
       </body>
     </HTML>
   );

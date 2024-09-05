@@ -174,6 +174,7 @@ export const CreateMessageSelect = () => {
           </div>
         </div>
       </div>
+      <script src="./public/script.js"></script>
     </WithHTML>
   );
 };

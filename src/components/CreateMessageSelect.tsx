@@ -1,5 +1,8 @@
 import { css } from "@hono/hono/css";
+
 import { WithHTML } from "../layout/WithHTML.tsx";
+import { getAllCocktails } from "./utils.ts";
+import { Cocktail } from "../api/utils/types.ts";
 
 const selectedStyle = css`
   height: 24vh;
@@ -101,7 +104,7 @@ const checkLinkStyle = css`
  * メッセージを選択する画面を返す関数
  */
 
-export const CreateMessageSelect = () => {
+export const CreateMessageSelect = async () => {
   return (
     <WithHTML>
       <link
@@ -132,42 +135,11 @@ export const CreateMessageSelect = () => {
             </form>
           </div>
           <ul class={wordListStyle} id="kennsaku_result">
-            <li onclick="_buttonclick(this)">
-              あなたを守りたい<small>ブルドッグ</small>
-            </li>
-            <li onclick="_buttonclick(this)">
-              いつも2人で<small>サイドカー</small>
-            </li>
-            <li onclick="_buttonclick(this)">
-              正しき心<small>ジンバッグ</small>
-            </li>
-            <li onclick="_buttonclick(this)">
-              素晴らしい<small>アプリコット・クーラー</small>
-            </li>
-            <li onclick="_buttonclick(this)">
-              冒険<small>アラウンド・ザ・ワールド</small>
-            </li>
-            <li onclick="_buttonclick(this)">
-              偽りなき心<small>アラスカ</small>
-            </li>
-            <li onclick="_buttonclick(this)">
-              幸せいっぱい<small>ウエディング・ベル</small>
-            </li>
-            <li onclick="_buttonclick(this)">
-              晴れやかな心で<small>エバー・グリーン</small>
-            </li>
-            <li onclick="_buttonclick(this)">
-              あなたに会いたい<small>ケーブルグラム</small>
-            </li>
-            <li onclick="_buttonclick(this)">
-              華麗<small>コスモポリタン</small>
-            </li>
-            <li onclick="_buttonclick(this)">
-              あるがままに<small>ジン・フィズ</small>
-            </li>
-            <li onclick="_buttonclick(this)">
-              秘密<small>シンガポール・スリング</small>
-            </li>
+            {(await getAllCocktails()).map((cocktail: Cocktail) => (
+              <li onclick="_buttonclick(this)">
+                {cocktail.word} <small>{cocktail.name}</small>
+              </li>
+            ))}
           </ul>
           <div class={checkLinkStyle}>
             <a href="./check">確認</a>

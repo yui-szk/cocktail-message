@@ -1,7 +1,13 @@
 async function share(){
-    try{
-        await navigator.share({title:"cocktail message", url: "https://example.com", text:"カクテル"});
-    }catch(e){
-        console.log(e);
+    const title = 'Cocktail message';
+    const url = 'https://example.com';
+    if(!!navigator.share){
+        try{
+            await navigator.share({title: title, url: url, text:"カクテル"});
+        }catch(e){
+            console.log(e);
+        }
+    }else{
+        alert(url);
     }
 }

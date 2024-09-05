@@ -1,5 +1,6 @@
 import { css } from "@hono/hono/css";
 import { WithHTML } from "../layout/WithHTML.tsx";
+//import {buttonclick, kennsaku_show} from "../../public/script.js"
 
 const selectedStyle = css`
   height: 24vh;
@@ -104,7 +105,6 @@ const checkLinkStyle = css`
 export const CreateMessageSelect = () => {
   return (
     <WithHTML>
-      <script src="./public/script.js"></script>
       <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
@@ -175,6 +175,7 @@ export const CreateMessageSelect = () => {
           </div>
         </div>
       </div>
+      <script src="./public/script.js"></script>
     </WithHTML>
   );
 };

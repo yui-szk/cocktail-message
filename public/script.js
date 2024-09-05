@@ -1,6 +1,6 @@
 let created_sentence = [];
 
-self.addEventListener("load", () => {
+window.addEventListener("load", () => {
   // ウィンドウが読み込まれた時の処理
   fetch("/api/cocktail/all")
     .then((response) => {
@@ -30,7 +30,7 @@ self.addEventListener("load", () => {
     });
 });
 
-export function buttonclick(obj) {
+function buttonclick(obj) {
   let text = "";
   obj.childNodes.forEach((node) => {
     if (node.nodeType === node.TEXT_NODE) {
@@ -59,7 +59,7 @@ export function buttonclick(obj) {
   }
 }
 
-export function kennsaku_show() {
+function kennsaku_show() {
   const search_kekka = document.getElementById("kennsaku").value; //検索文字列
 
   const liElements = document.querySelectorAll("#kennsaku_result li");

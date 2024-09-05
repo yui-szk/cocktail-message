@@ -15,4 +15,4 @@ createMessage
   .get("/", (ctx) => ctx.html(<Home />))
   .get("/create", (ctx) => ctx.html(<CreateMessageTop />))
   .get("/select", (ctx) => ctx.html(<CreateMessageSelect />))
-  .get("/check", (ctx) => ctx.html(<CreateMessageCheck />));
+  .get("/check", (ctx) => ctx.html(CreateMessageCheck(ctx)));

@@ -87,5 +87,5 @@ async function _messageSave() {
   });
 
   const body = await res.text();
-  document.getElementById("message_save").href = "/check?id=" + body;
+  window.location = "/check?id=" + body;
 }

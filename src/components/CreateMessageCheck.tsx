@@ -147,7 +147,7 @@ export const CreateMessageCheck = () => {
           </div>
         </div>
       </div>
-      <script src = "./public/share.js"></script>
+      <script src="./public/share.js"></script>
     </WithHTML>
   );
 };

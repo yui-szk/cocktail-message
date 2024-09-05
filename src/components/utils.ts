@@ -21,3 +21,20 @@ export const getAllCocktails = async (): Promise<Cocktail[]> => {
   if (!res.ok) throw new Error(await res.text());
   return await res.json();
 };
+
+/**
+ * Get a cocktail from the server
+ *
+ * @param Cocktail name
+ * @returns Cocktail
+ *
+ * @example
+ * \`\`\`ts
+ * const cocktail = await getCocktail("アイリッシュコーヒー");
+ * \`\`\`
+ */
+export const getCocktail = async (name: string): Promise<Cocktail> => {
+  const res = await client.cocktail.$get({ query: { name } });
+  if (!res.ok) throw new Error(`Failed to get the cocktail,  ${name}`);
+  return await res.json();
+};

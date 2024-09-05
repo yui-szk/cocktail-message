@@ -1,9 +1,10 @@
 import { hc } from "@hono/hono/client";
 
-import { API } from "../api/mod.ts";
+import type { API } from "../api/mod.ts";
 import { Cocktail } from "../api/utils/types.ts";
 
-const client = hc<API>("http://0.0.0.0:8000/api");
+const url: string = Deno.env.get("API_URL") || "http://0.0.0.0:8000";
+const client = hc<API>(`${url}/api`);
 
 /**
  * Get cocktails from the server

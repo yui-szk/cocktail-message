@@ -19,6 +19,7 @@ app.use(logger());
 app
   .route("/", createMessage)
   .route("/api", api)
+  .use("/favicon.ico", serveStatic({ path: "./public/images/favicon.ico" }))
   .use("/public/*", serveStatic({ root: "./" }));
 
 Deno.serve(app.fetch);

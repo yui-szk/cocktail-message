@@ -15,4 +15,6 @@ createMessage
   .get("/", (ctx) => ctx.html(<Home />))
   .get("/create", (ctx) => ctx.html(<CreateMessageTop />))
   .get("/select", (ctx) => ctx.html(<CreateMessageSelect />))
-  .get("/check", (ctx) => ctx.html(CreateMessageCheck(ctx)));
+  .get("/check", (ctx) => {
+    const id  = ctx.req.query("id") || "";
+return    ctx.html(<CreateMessageCheck id={id}/>)});

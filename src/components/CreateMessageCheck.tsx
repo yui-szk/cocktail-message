@@ -1,4 +1,5 @@
 import { css, cx } from "@hono/hono/css";
+import { PropsWithChildren } from "@hono/hono/jsx";
 import { WithHTML } from "../layout/WithHTML.tsx";
 import { CocktailGlass } from "./CocktailGlass.tsx";
 import { getCocktail, getMessage } from "./utils.ts";
@@ -98,8 +99,8 @@ const sendButtonStyle = css`
  * 作成したメッセージを確認する画面を返す
  */
 
-export const CreateMessageCheck = async (ctx: Context) => {
-  const id: string = ctx.req.query("id") || "";
+export const CreateMessageCheck = async (props: PropsWithChildren<{ id: string }>) => {
+  const id: string = props.id
 
   const cocktails = (await getMessage(id)).cocktails.map(
     async (cocktailName: CocktailName) => {

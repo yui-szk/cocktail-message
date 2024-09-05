@@ -170,7 +170,7 @@ export const CreateMessageSelect = () => {
             </li>
           </ul>
           <div class={checkLinkStyle}>
-            <a href="./check">確認</a>
+            <a href="./check">決定</a>
           </div>
         </div>
       </div>

@@ -114,14 +114,19 @@ export const CreateMessageSelect = () => {
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
       />
       <div>
-        <div id = "clicked_button">
-          <ul class={selectedStyle} id="c_button">
-          </ul>
+        <div id="clicked_button">
+          <ul class={selectedStyle} id="c_button"></ul>
         </div>
         <div class={wordListContainerStyle}>
           <div>
             <form action="">
-              <input type="text" value ="" id="kennsaku" placeholder="ここに検索したい語句を入力してください" oninput="kennsaku_show()"/>
+              <input
+                type="text"
+                value=""
+                id="kennsaku"
+                placeholder="ここに検索したい語句を入力してください"
+                oninput="kennsaku_show()"
+              />
               <button type="submit">
                 <span class="material-symbols-outlined">search</span>
               </button>

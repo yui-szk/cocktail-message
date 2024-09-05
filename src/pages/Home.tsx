@@ -1,10 +1,6 @@
 import { css, keyframes } from "@hono/hono/css";
 import { WithHTML } from "../layout/WithHTML.tsx";
 
-/**
- * ホーム画面を返す
- */
-
 const bound = keyframes`
   0% {
     top: -4rem;
@@ -120,6 +116,10 @@ const noteStyle = css`
   margin-top: 1rem;
   text-align: center;
 `;
+
+/**
+ * ホーム画面を返す
+ */
 
 export const Home = () => {
   return (

@@ -53,7 +53,8 @@ export const CreateMessageTop = () => {
           preload="auto"
           autoplay
           src="/public/audio/ice.mp3"
-        ></audio>
+        >
+        </audio>
         <div class={imageStyle}>
           <img
             src="/public/images/cocktail-glass-empty.svg"

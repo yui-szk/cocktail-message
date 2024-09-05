@@ -7,13 +7,16 @@ function _buttonclick(obj) {
       text += node.textContent.trim();
     }
   });
-  const selectedCocktailMessage = text; //クリックしたボタンの文字
+  const selectedCocktailMessage = text; //クリックしたボタンのword
 
   if (document.getElementById("selected_message_list").childElementCount >= 4) {
     alert("これ以上言葉を追加できません");
-  } else if (!created_sentence.includes(selectedCocktailMessage)) {
-    created_sentence.push(selectedCocktailMessage);
-
+  } else if (created_sentence.filter((e) => {
+    return e.message === selectedCocktailMessage}).length === 0) {
+    //created_sentence.push(selectedCocktailMessage);
+    //console.log(obj.childNodes[1].innerText);
+    created_sentence.push({name: obj.childNodes[1].innerText, message: selectedCocktailMessage});
+    
     const newLi = document.createElement("li");
     newLi.textContent = selectedCocktailMessage;
 
@@ -61,14 +64,31 @@ document.addEventListener("DOMContentLoaded", () => {
         .join(" ");
       liElement.remove();
 
-      // constで宣言しても配列操作はできるのでconstにしておく
-      const tmp = [];
-      for (i = 0; i < created_sentence.length; i++) {
-        if (created_sentence[i] !== textContent) {
-          tmp.push(created_sentence[i]);
-        }
-      }
-      created_sentence = tmp;
+      created_sentence = created_sentence.filter((e) => {
+        return e.message !== textContent;
+      });
     }
   });
 });
+
+
+async function messageSave(){
+  const cocktails = []
+  // const cocktails: { name: string }[] = array.map((item: string) => {
+  //   return { name: item };
+  // });
+  created_sentence.forEach((e) => {
+    cocktails.push({name: String(e.name)});
+  });
+  const res = await fetch("/api/message",{method: "POST", 
+    headers:{ "Content-Type": "application/json"}, 
+    body:JSON.stringify({"cocktails": cocktails})
+  });
+
+  const body = await res.text();
+  document.getElementById("message_save").href = "/check?id=" + body;
+  //console.log(body);
+  //const data = await res.json();
+  //console.log(data);
+  //return data.id;
+}

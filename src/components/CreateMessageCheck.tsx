@@ -90,6 +90,12 @@ const sendButtonStyle = css`
   }
 `;
 
+// test用
+const message1: string | null = null;
+const message2: string | null = null;
+const message3: string | null = null;
+const message4: string | null = null;
+
 /**
  * 作成したメッセージを確認する画面を返す
  */
@@ -107,33 +113,33 @@ export const CreateMessageCheck = () => {
           />
         </div>
         <div class={messageContainerStyle}>
-          <div class={messageStyle} id="grid-item-1">
-            <p>
-              あなたを
-              <br />
-              守りたい
-            </p>
+          <div
+            class={messageStyle}
+            id="grid-item-1"
+            style={message1 ? "" : "display: none"}
+          >
+            <p>{message1}</p>
           </div>
-          <div class={messageStyle} id="grid-item-2">
-            <p>
-              あなたを
-              <br />
-              守りたい
-            </p>
+          <div
+            class={messageStyle}
+            id="grid-item-2"
+            style={message2 ? "" : "display: none"}
+          >
+            <p>{message2}</p>
           </div>
-          <div class={messageStyle} id="grid-item-3">
-            <p>
-              あなたを
-              <br />
-              守りたい
-            </p>
+          <div
+            class={messageStyle}
+            id="grid-item-3"
+            style={message3 ? "" : "display: none"}
+          >
+            <p>{message3}</p>
           </div>
-          <div class={messageStyle} id="grid-item-4">
-            <p>
-              あなたを
-              <br />
-              守りたい
-            </p>
+          <div
+            class={messageStyle}
+            id="grid-item-4"
+            style={message4 ? "" : "display: none"}
+          >
+            <p>{message4}</p>
           </div>
         </div>
 

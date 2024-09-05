@@ -9,7 +9,7 @@ function _buttonclick(obj) {
   });
   const selectedCocktailMessage = text; //クリックしたボタンのword
 
-  if (document.getElementById("selected_message_list").childElementCount >= 4) {
+  if (document.getElementById("selected_message_list").childElementCount > 4) {
     alert("これ以上言葉を追加できません");
   } else if (
     created_sentence.filter((e) => {

@@ -114,7 +114,7 @@ export const CreateMessageSelect = () => {
       />
       <div>
         <div id="clicked_button">
-          <ul class={selectedStyle} id="c_button"></ul>
+          <ul class={selectedStyle} id="selected_message_list"></ul>
         </div>
         <div class={wordListContainerStyle}>
           <div>

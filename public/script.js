@@ -1,6 +1,6 @@
 let created_sentence = [];
 
-window.addEventListener("load", () => {
+addEventListener("load", () => {
   // ウィンドウが読み込まれた時の処理
   fetch("/api/cocktail/all")
     .then((response) => {

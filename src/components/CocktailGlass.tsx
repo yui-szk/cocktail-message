@@ -4,7 +4,9 @@ import { PropsWithChildren } from "@hono/hono/jsx";
  * カクテルグラスの画像を描画する
  */
 
-export function CocktailGlass(props: PropsWithChildren<{ colors: string[] }>) {
+export const CocktailGlass = (
+  props: PropsWithChildren<{ colors: string[] }>
+) => {
   const color = props.colors;
   return (
     <svg
@@ -183,4 +185,4 @@ export function CocktailGlass(props: PropsWithChildren<{ colors: string[] }>) {
       />
     </svg>
   );
-}
+};

@@ -1,6 +1,7 @@
 import { css, cx } from "@hono/hono/css";
 import { WithHTML } from "../layout/WithHTML.tsx";
 import { CocktailGlass } from "./CocktailGlass.tsx";
+import { getCocktail } from "./utils.ts";
 
 const imageStyle = css`
   height: 75vh;
@@ -43,7 +44,6 @@ const messageContainerStyle = css`
 `;
 
 const messageStyle = css`
-  background-color: #eadf4a;
   min-width: 7rem;
   min-height: 7rem;
   border-radius: 100%;
@@ -54,6 +54,7 @@ const messageStyle = css`
 
   p {
     color: var(--color-black);
+    margin: 0 1rem;
   }
 `;
 
@@ -90,59 +91,47 @@ const sendButtonStyle = css`
   }
 `;
 
-// test用
-const message1: string | null = null;
-const message2: string | null = null;
-const message3: string | null = null;
-const message4: string | null = null;
-
 /**
  * 作成したメッセージを確認する画面を返す
  */
 
-export const CreateMessageCheck = () => {
+export const CreateMessageCheck = async () => {
+  const cocktailNames = [
+    "スパニッシュ・タウン",
+    "カンパリオレンジ",
+    "アクダクト",
+    "オレンジブロッサム",
+  ];
+
+  const cocktails = cocktailNames.map(async (name) => {
+    return await getCocktail(name);
+  });
+  const colors = [];
+  for await (const cocktail of cocktails) colors.push(cocktail.color);
+
   return (
     <WithHTML>
       <div>
         <div class={imageStyle}>
-          <CocktailGlass
-            color1={"#e98673"}
-            color2={"#bb9733"}
-            color3={"#89375c"}
-            color4={"#f9570b"}
-          />
+          <CocktailGlass colors={colors} />
         </div>
         <div class={messageContainerStyle}>
-          <div
-            class={messageStyle}
-            id="grid-item-1"
-            style={message1 ? "" : "display: none"}
-          >
-            <p>{message1}</p>
-          </div>
-          <div
-            class={messageStyle}
-            id="grid-item-2"
-            style={message2 ? "" : "display: none"}
-          >
-            <p>{message2}</p>
-          </div>
-          <div
-            class={messageStyle}
-            id="grid-item-3"
-            style={message3 ? "" : "display: none"}
-          >
-            <p>{message3}</p>
-          </div>
-          <div
-            class={messageStyle}
-            id="grid-item-4"
-            style={message4 ? "" : "display: none"}
-          >
-            <p>{message4}</p>
-          </div>
+          {cocktails.map(async (cocktail, index) => {
+            return (
+              <div
+                class={messageStyle}
+                id={`grid-item-${index + 1}`}
+                style={
+                  (await cocktail).word
+                    ? `background-color: ${(await cocktail).color};`
+                    : "display: none"
+                }
+              >
+                <p>{(await cocktail).word}</p>
+              </div>
+            );
+          })}
         </div>
-
         <div class={buttonContainerStyle}>
           <div class={buttonStyle}>
             <a href="./">つくり直す</a>

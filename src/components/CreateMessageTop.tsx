@@ -2,28 +2,31 @@ import { css } from "@hono/hono/css";
 import { WithHTML } from "../layout/WithHTML.tsx";
 
 const imageStyle = css`
-  height: 85vh;
+  height: 72vh;
   display: flex;
   justify-content: center;
-  margin-top: 3rem;
 
   img {
-    height: calc(100% - 11rem);
+    height: calc(100% - 6.5rem);
+    margin-top: 4rem;
   }
 `;
 
 const buttonStyle = css`
-  position: absolute;
-  bottom: 4rem;
   background-color: var(--color-base);
   border-radius: 0.5rem;
+  width: 7.5rem;
+  height: 7.25rem;
+  display: flex;
+  text-align: center;
+  justify-content: center;
 
   a {
     display: block;
     color: var(--color-black);
     text-decoration: none;
-    padding: 2rem 1.5rem;
     font-size: 1rem;
+    padding: 2.1rem 1rem;
   }
 `;
 

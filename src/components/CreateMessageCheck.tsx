@@ -106,14 +106,14 @@ export const CreateMessageCheck = async (ctx: Context) => {
     },
   );
 
-  let colors = [];
+  let colors:string[] = [];
   for await (const cocktail of cocktails) colors.push(cocktail.color);
   switch (colors.length) {
     case 1:
       colors = [colors[0], colors[0], colors[0], colors[0]];
       break;
     case 2:
-      colors = [colors[0], ...colors, colors.at(-1)];
+      colors = [colors[0], ...colors, colors[1]];
       break;
     case 3:
       colors = [...colors, colors[colors.length - 1]];
@@ -121,8 +121,6 @@ export const CreateMessageCheck = async (ctx: Context) => {
     default:
       colors;
   }
-
-  console.log(colors);
 
   return (
     <WithHTML>

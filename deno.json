@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
     "jsx": "precompile",
-    "jsxImportSource": "@hono/hono/jsx",
-    "lib": ["deno.window", "dom"]
+    "jsxImportSource": "@hono/hono/jsx"
   },
   "fmt": { "exclude": ["LICENSE", ".github/**/*.md"] },
   "tasks": {

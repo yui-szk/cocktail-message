@@ -1,6 +1,5 @@
 import { css } from "@hono/hono/css";
 import { WithHTML } from "../layout/WithHTML.tsx";
-//import {buttonclick, kennsaku_show} from "../../public/script.js"
 
 const selectedStyle = css`
   height: 24vh;

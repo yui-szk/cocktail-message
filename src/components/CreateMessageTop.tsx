@@ -1,7 +1,7 @@
 import { css, keyframes } from "@hono/hono/css";
 import { WithHTML } from "../layout/WithHTML.tsx";
 
-const fadeIn = keyframes`  
+const fadeIn = keyframes`
   from {
     opacity: 0;
   }

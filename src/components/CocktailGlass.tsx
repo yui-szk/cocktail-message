@@ -5,7 +5,7 @@ import { PropsWithChildren } from "@hono/hono/jsx";
  */
 
 export const CocktailGlass = (
-  props: PropsWithChildren<{ colors: string[] }>
+  props: PropsWithChildren<{ colors: string[] }>,
 ) => {
   const color = props.colors;
   return (

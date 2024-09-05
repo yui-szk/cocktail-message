@@ -103,7 +103,7 @@ export const CreateMessageCheck = async (ctx: Context) => {
   const cocktails = (await getMessage(id)).cocktails.map(
     async (cocktailName: CocktailName) => {
       return await getCocktail(cocktailName.name);
-    }
+    },
   );
 
   let colors = [];
@@ -136,17 +136,15 @@ export const CreateMessageCheck = async (ctx: Context) => {
               <div
                 class={messageStyle}
                 id={`grid-item-${index + 1}`}
-                style={
-                  (await getCocktail(cocktail.name)).word
-                    ? `background-color: ${
-                        (await getCocktail(cocktail.name)).color
-                      };`
-                    : "display: none"
-                }
+                style={(await getCocktail(cocktail.name)).word
+                  ? `background-color: ${
+                    (await getCocktail(cocktail.name)).color
+                  };`
+                  : "display: none"}
               >
                 <p>{(await getCocktail(cocktail.name)).word}</p>
               </div>
-            )
+            ),
           )}
         </div>
         <div class={buttonContainerStyle}>

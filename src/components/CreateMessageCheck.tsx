@@ -137,14 +137,15 @@ export const CreateMessageCheck = () => {
             <a href="./">つくり直す</a>
           </div>
           <div class={cx(buttonStyle, sendButtonStyle)}>
-            <a href="./check">
+            <button onclick="share()">
               気持ちを
               <br />
               送る
-            </a>
+            </button>
           </div>
         </div>
       </div>
+      <script src = "./public/share.js"></script>
     </WithHTML>
   );
 };

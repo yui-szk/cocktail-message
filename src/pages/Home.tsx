@@ -115,6 +115,12 @@ const imageStyle = css`
   }
 `;
 
+const noteStyle = css`
+  font-size: 0.75rem;
+  margin-top: 1rem;
+  text-align: center;
+`;
+
 export const Home = () => {
   return (
     <WithHTML>
@@ -141,6 +147,7 @@ export const Home = () => {
             <img src="/public/images/cocktail-glass.svg" alt="カクテルグラス" />
           </a>
         </div>
+        <p class={noteStyle}>グラスをクリックすると音が鳴ります</p>
       </section>
     </WithHTML>
   );

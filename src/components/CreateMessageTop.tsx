@@ -36,7 +36,10 @@ export const CreateMessageTop = () => {
     <WithHTML>
       <div>
         <div class={imageStyle}>
-          <img src="/public/images/cocktail-glass.svg" alt="empty glass" />
+          <img
+            src="/public/images/cocktail-glass-empty.svg"
+            alt="empty glass"
+          />
         </div>
         <div class={buttonStyle}>
           <a href="./select">

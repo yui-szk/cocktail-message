@@ -124,6 +124,7 @@ export const Home = () => {
           <span>g</span>
           <span>e</span>
         </h2>
+        <img src="/public/images/cocktail-glass.svg" alt="カクテルグラス" />
       </section>
     </WithHTML>
   );

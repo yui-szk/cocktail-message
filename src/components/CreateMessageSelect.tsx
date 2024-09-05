@@ -97,6 +97,10 @@ const checkLinkStyle = css`
   }
 `;
 
+/**
+ * 作成するメッセージを選択する画面を返す関数
+ */
+
 export const CreateMessageSelect = () => {
   return (
     <WithHTML>

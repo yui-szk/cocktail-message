@@ -99,7 +99,12 @@ export const CreateMessageCheck = () => {
     <WithHTML>
       <div>
         <div class={imageStyle}>
-          <CocktailGlass />
+          <CocktailGlass
+            color1={"#e98673"}
+            color2={"#bb9733"}
+            color3={"#89375c"}
+            color4={"#f9570b"}
+          />
         </div>
         <div class={messageContainerStyle}>
           <div class={messageStyle} id="grid-item-1">

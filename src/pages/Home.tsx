@@ -28,86 +28,98 @@ const bound = keyframes`
 `;
 
 const titleAnimation = css`
-  #title {
-    letter-spacing: 3px;
+  font-family: var(--font-en);
+  font-size: 1.75rem;
+  margin: 3.5rem 0;
+  text-align: center;
+  letter-spacing: 3px;
 
-    span {
-      position: relative;
-      opacity: 0;
-      animation: 0.8s ease-out forwards ${bound};
-    }
-
-    #after-space {
-      margin-right: 0.5rem;
-    }
+  span {
+    position: relative;
+    opacity: 0;
+    animation: 0.8s ease-out forwards ${bound};
   }
 
-  #title span:nth-child(1) {
+  #after-space {
+    margin-right: 0.5rem;
+  }
+
+  span:nth-child(1) {
     animation-delay: 0.1s;
   }
 
-  #title span:nth-child(2) {
+  span:nth-child(2) {
     animation-delay: 0.2s;
   }
 
-  #title span:nth-child(3) {
+  span:nth-child(3) {
     animation-delay: 0.3s;
   }
 
-  #title span:nth-child(4) {
+  span:nth-child(4) {
     animation-delay: 0.4s;
   }
 
-  #title span:nth-child(5) {
+  span:nth-child(5) {
     animation-delay: 0.5s;
   }
 
-  #title span:nth-child(6) {
+  span:nth-child(6) {
     animation-delay: 0.6s;
   }
 
-  #title span:nth-child(7) {
+  span:nth-child(7) {
     animation-delay: 0.7s;
   }
 
-  #title span:nth-child(8) {
+  span:nth-child(8) {
     animation-delay: 0.8s;
   }
 
-  #title span:nth-child(9) {
+  span:nth-child(9) {
     animation-delay: 1.2s;
   }
 
-  #title span:nth-child(10) {
+  span:nth-child(10) {
     animation-delay: 1.3s;
   }
 
-  #title span:nth-child(11) {
+  span:nth-child(11) {
     animation-delay: 1.4s;
   }
 
-  #title span:nth-child(12) {
+  span:nth-child(12) {
     animation-delay: 1.5s;
   }
 
-  #title span:nth-child(13) {
+  span:nth-child(13) {
     animation-delay: 1.6s;
   }
 
-  #title span:nth-child(14) {
+  span:nth-child(14) {
     animation-delay: 1.7s;
   }
 
-  #title span:nth-child(15) {
+  span:nth-child(15) {
     animation-delay: 1.8s;
+  }
+`;
+
+const imageStyle = css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    height: calc(100svh - 15rem);
   }
 `;
 
 export const Home = () => {
   return (
     <WithHTML>
-      <section id="Home" class={titleAnimation}>
-        <h2 id="title">
+      <section id="Home">
+        <h2 class={titleAnimation}>
           <span>C</span>
           <span>o</span>
           <span>c</span>
@@ -124,7 +136,11 @@ export const Home = () => {
           <span>g</span>
           <span>e</span>
         </h2>
-        <img src="/public/images/cocktail-glass.svg" alt="カクテルグラス" />
+        <div class={imageStyle}>
+          <a href="/create">
+            <img src="/public/images/cocktail-glass.svg" alt="カクテルグラス" />
+          </a>
+        </div>
       </section>
     </WithHTML>
   );

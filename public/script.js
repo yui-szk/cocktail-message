@@ -11,11 +11,15 @@ function _buttonclick(obj) {
 
   if (document.getElementById("selected_message_list").childElementCount >= 4) {
     alert("これ以上言葉を追加できません");
-  } else if (created_sentence.filter((e) => {
-    return e.message === selectedCocktailMessage}).length === 0) {
-    //created_sentence.push(selectedCocktailMessage);
-    //console.log(obj.childNodes[1].innerText);
-    created_sentence.push({name: obj.childNodes[1].innerText, message: selectedCocktailMessage});
+  } else if (
+    created_sentence.filter((e) => {
+      return e.message === selectedCocktailMessage;
+    }).length === 0
+  ) {
+    created_sentence.push({
+      name: obj.childNodes[1].innerText,
+      message: selectedCocktailMessage,
+    });
 
     const newLi = document.createElement("li");
     newLi.textContent = selectedCocktailMessage;
@@ -71,24 +75,18 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
-async function _messageSave(){
-  const cocktails = []
-  // const cocktails: { name: string }[] = array.map((item: string) => {
-  //   return { name: item };
-  // });
+async function _messageSave() {
+  const cocktails = [];
   created_sentence.forEach((e) => {
-    cocktails.push({name: String(e.name)});
+    cocktails.push({ name: String(e.name) });
   });
-  const res = await fetch("/api/message",{method: "POST",
-    headers:{ "Content-Type": "application/json"},
-    body:JSON.stringify({"cocktails": cocktails})
+  const res = await fetch("/api/message", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ "cocktails": cocktails }),
   });
 
   const body = await res.text();
   document.getElementById("message_save").href = "/check?id=" + body;
-  //console.log(body);
-  //const data = await res.json();
-  //console.log(data);
-  //return data.id;
 }
+

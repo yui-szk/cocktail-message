@@ -138,13 +138,6 @@ export const CreateMessageCheck = () => {
               追加する
             </a>
           </div>
-
-          <div class={buttonStyle}>
-            <a href="https://twitter.com/intent/tweet?text=あいうえお">
-              気持ちを共有する
-            </a>
-          </div>
-
           <div class={cx(buttonStyle, sendButtonStyle)}>
             <a href="./check">
               気持ちを

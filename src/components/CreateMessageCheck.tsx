@@ -68,14 +68,16 @@ const buttonStyle = css`
   border-radius: 0.5rem;
   width: 7.5rem;
   height: 7.25rem;
+  display: flex;
   text-align: center;
+  justify-content: center;
 
   a {
     display: block;
     color: var(--color-black);
     text-decoration: none;
-    padding: 2rem 1.5rem;
     font-size: 1rem;
+    padding: 2.9rem 1rem;
   }
 `;
 
@@ -84,6 +86,7 @@ const sendButtonStyle = css`
 
   a {
     color: var(--color-white);
+    padding: 2.1rem 1.5rem;
   }
 `;
 
@@ -131,11 +134,7 @@ export const CreateMessageCheck = () => {
 
         <div class={buttonContainerStyle}>
           <div class={buttonStyle}>
-            <a href="./select">
-              気持ちを
-              <br />
-              追加する
-            </a>
+            <a href="./">つくり直す</a>
           </div>
           <div class={cx(buttonStyle, sendButtonStyle)}>
             <a href="./check">

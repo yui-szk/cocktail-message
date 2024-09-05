@@ -16,6 +16,7 @@ const selectedStyle = css`
     margin: 0.5rem 0;
     border-radius: 2rem;
     align-items: center;
+    flex-wrap: wrap;
 
     button {
       justify-self: end;
@@ -112,66 +113,59 @@ export const CreateMessageSelect = () => {
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
       />
       <div>
-        <div>
-          <ul class={selectedStyle}>
-            <li>
-              あなたを守りたい
-              <button>
-                <span class="material-symbols-outlined">close</span>
-              </button>
-            </li>
-            <li>
-              いつも2人で
-              <button>
-                <span class="material-symbols-outlined">close</span>
-              </button>
-            </li>
-          </ul>
+        <div id="clicked_button">
+          <ul class={selectedStyle} id="selected_message_list"></ul>
         </div>
         <div class={wordListContainerStyle}>
           <div>
             <form action="">
-              <input type="text" />
+              <input
+                type="text"
+                value=""
+                id="kennsaku"
+                placeholder="ここに検索したい語句を入力してください"
+                oninput="_kennsaku_show()"
+              />
               <button type="submit">
                 <span class="material-symbols-outlined">search</span>
               </button>
             </form>
           </div>
-          <ul class={wordListStyle}>
-            <li>
+          <ul class={wordListStyle} id="kennsaku_result">
+            <li onclick="_buttonclick(this)">
               あなたを守りたい<small>ブルドッグ</small>
             </li>
-            <li>
+            <li onclick="_buttonclick(this)">
               いつも2人で<small>サイドカー</small>
             </li>
-            <li>
+            <li onclick="_buttonclick(this)">
               正しき心<small>ジンバッグ</small>
             </li>
-            <li>
+            <li onclick="_buttonclick(this)">
               素晴らしい<small>アプリコット・クーラー</small>
             </li>
-            <li>
+            <li onclick="_buttonclick(this)">
               冒険<small>アラウンド・ザ・ワールド</small>
             </li>
-            <li>
+            <li onclick="_buttonclick(this)">
               偽りなき心<small>アラスカ</small>
             </li>
-            <li>
+            <li onclick="_buttonclick(this)">
               幸せいっぱい<small>ウエディング・ベル</small>
             </li>
-            <li>
+            <li onclick="_buttonclick(this)">
               晴れやかな心で<small>エバー・グリーン</small>
             </li>
-            <li>
+            <li onclick="_buttonclick(this)">
               あなたに会いたい<small>ケーブルグラム</small>
             </li>
-            <li>
+            <li onclick="_buttonclick(this)">
               華麗<small>コスモポリタン</small>
             </li>
-            <li>
+            <li onclick="_buttonclick(this)">
               あるがままに<small>ジン・フィズ</small>
             </li>
-            <li>
+            <li onclick="_buttonclick(this)">
               秘密<small>シンガポール・スリング</small>
             </li>
           </ul>
@@ -180,6 +174,7 @@ export const CreateMessageSelect = () => {
           </div>
         </div>
       </div>
+      <script src="./public/script.js"></script>
     </WithHTML>
   );
 };

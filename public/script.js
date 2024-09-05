@@ -64,14 +64,14 @@ function _kennsaku_show() {
 
   const liElements = document.querySelectorAll("#kennsaku_result li");
   liElements.forEach((li) => {
-    let text2 = "";
+    let text = "";
     li.childNodes.forEach((node) => {
       if (node.nodeType === Node.TEXT_NODE) {
-        text2 += node.textContent.trim();
+        text += node.textContent.trim();
       }
     });
 
-    li.style.display = text2.includes(search_kekka) ? "" : "none";
+    li.style.display = text.includes(search_kekka) ? "" : "none";
   });
 }
 

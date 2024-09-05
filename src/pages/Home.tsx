@@ -102,17 +102,19 @@ const titleAnimation = css`
 `;
 
 const imageStyle = css`
+  height: calc(100svh - 15rem);
   display: flex;
   align-items: center;
   justify-content: center;
 
   img {
     height: calc(100svh - 15rem);
+    max-height: calc(820px - 15rem);
   }
 `;
 
 const noteStyle = css`
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   margin-top: 1rem;
   text-align: center;
 `;
@@ -147,7 +149,12 @@ export const Home = () => {
             <img src="/public/images/cocktail-glass.svg" alt="カクテルグラス" />
           </a>
         </div>
-        <p class={noteStyle}>グラスをクリックすると音が鳴ります</p>
+        <div class={noteStyle}>
+          <p>グラスをクリックではじめる</p>
+          <p>
+            <small>※音が鳴ります</small>
+          </p>
+        </div>
       </section>
     </WithHTML>
   );

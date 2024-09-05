@@ -91,7 +91,8 @@ document.addEventListener("DOMContentLoaded", () => {
         .join(" ");
       liElement.remove();
 
-      tmp = [];
+      // constで宣言しても配列操作はできるのでconstにしておく
+      const tmp = [];
       for (i = 0; i < created_sentence.length; i++) {
         if (created_sentence[i] !== textContent) {
           tmp.push(created_sentence[i]);

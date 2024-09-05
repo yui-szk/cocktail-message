@@ -2,12 +2,12 @@ import { css } from "@hono/hono/css";
 import { WithHTML } from "../layout/WithHTML.tsx";
 
 const imageStyle = css`
-  height: 72vh;
+  height: 75vh;
   display: flex;
   justify-content: center;
 
   img {
-    height: calc(100% - 6.5rem);
+    height: calc(100% - 7rem);
     margin-top: 4rem;
   }
 `;

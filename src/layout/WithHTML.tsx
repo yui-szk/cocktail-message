@@ -8,6 +8,9 @@ const layoutStyle = css`
       padding: 0;
       box-sizing: border-box;
 
+      --font-jp: "Noto Serif JP", serif;
+      --font-en: "Cormorant Garamond", serif;
+
       --color-black: #000000;
       --color-white: #ffffff;
       --color-main: #443d3a;

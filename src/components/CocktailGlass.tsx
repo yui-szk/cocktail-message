@@ -1,4 +1,8 @@
-export function CocktailGlass() {
+/**
+ * カクテルグラスの画像を描画する
+ */
+
+export const CocktailGlass = () => {
   return (
     <svg
       id="cocktail-glass"
@@ -176,4 +180,4 @@ export function CocktailGlass() {
       />
     </svg>
   );
-}
+};

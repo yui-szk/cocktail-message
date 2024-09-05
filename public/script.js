@@ -16,7 +16,7 @@ function _buttonclick(obj) {
     //created_sentence.push(selectedCocktailMessage);
     //console.log(obj.childNodes[1].innerText);
     created_sentence.push({name: obj.childNodes[1].innerText, message: selectedCocktailMessage});
-    
+
     const newLi = document.createElement("li");
     newLi.textContent = selectedCocktailMessage;
 
@@ -80,8 +80,8 @@ async function messageSave(){
   created_sentence.forEach((e) => {
     cocktails.push({name: String(e.name)});
   });
-  const res = await fetch("/api/message",{method: "POST", 
-    headers:{ "Content-Type": "application/json"}, 
+  const res = await fetch("/api/message",{method: "POST",
+    headers:{ "Content-Type": "application/json"},
     body:JSON.stringify({"cocktails": cocktails})
   });
 

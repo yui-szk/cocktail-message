@@ -130,7 +130,7 @@ export const CreateMessageCheck = () => {
             </p>
           </div>
         </div>
-        
+
         <div class={buttonContainerStyle}>
           <div class={buttonStyle}>
             <a href="./select">

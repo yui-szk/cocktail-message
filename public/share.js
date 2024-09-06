@@ -5,7 +5,11 @@ async function _share() {
   const url = baseUrl + id;
   if (navigator.share) {
     try {
-      await navigator.share({ title: title, url: url, text: "作成したカクテルメッセージ" });
+      await navigator.share({
+        title: title,
+        url: url,
+        text: "作成したカクテルメッセージ",
+      });
     } catch (e) {
       console.log(e);
     }

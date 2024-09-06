@@ -1,4 +1,4 @@
-import { css, cx } from "@hono/hono/css";
+import { css, cx, keyframes } from "@hono/hono/css";
 import { WithHTML } from "../layout/WithHTML.tsx";
 import { CocktailGlass } from "./CocktailGlass.tsx";
 import { getCocktail, getMessage } from "./utils.ts";
@@ -45,6 +45,18 @@ const messageContainerStyle = css`
   }
 `;
 
+const float = keyframes`
+  0%{
+    transform: translateY(0.15rem);
+  }
+  50%{
+    transform: translateY(-0.15rem);
+  }
+  100%{
+    transform: translateY(0.15rem);
+  }
+`;
+
 const messageStyle = css`
   min-width: 7rem;
   min-height: 7rem;
@@ -53,6 +65,8 @@ const messageStyle = css`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  animation: 1.8s ease-in-out infinite ${float};
 
   p {
     color: var(--color-black);
@@ -102,6 +116,7 @@ export const CreateMessageCheck = async (
   props: PropsWithChildren<{ id: string }>,
 ) => {
   const id: string = props.id;
+
   const cocktails = (await getMessage(id)).cocktails.map(
     async (cocktailName: CocktailName) => {
       return await getCocktail(cocktailName.name);
@@ -139,7 +154,7 @@ export const CreateMessageCheck = async (
                 style={(await getCocktail(cocktail.name)).word
                   ? `background-color: ${
                     (await getCocktail(cocktail.name)).color
-                  };`
+                  }; animation-delay: ${index * 0.15}s`
                   : "display: none"}
               >
                 <p>{(await getCocktail(cocktail.name)).word}</p>

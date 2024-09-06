@@ -1,5 +1,35 @@
 let created_sentence = [];
 
+addEventListener("load", () => {
+  // ウィンドウが読み込まれた時の処理
+  fetch("/api/cocktail/all")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Received data:", data); // 取得したデータをコンソールに出力
+      // ここからデータのリストを作成
+      const liElements = document.getElementById("kennsaku_result");
+      for (i = 0; i < data.length; i++) {
+        const li = document.createElement("li");
+        li.setAttribute("onclick", "_buttonclick(this)");
+        li.textContent = data[i].word;
+
+        const small = document.createElement("small");
+        small.textContent = data[i].name;
+
+        li.appendChild(small);
+        liElements.appendChild(li);
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error); // エラーハンドリング
+    });
+});
+
 function _buttonclick(obj) {
   let text = "";
   obj.childNodes.forEach((node) => {

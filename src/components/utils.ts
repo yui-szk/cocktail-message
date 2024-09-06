@@ -29,9 +29,9 @@ export const getAllCocktails = async (): Promise<Cocktail[]> => {
  * @returns Cocktail
  *
  * @example
- * \`\`\`ts
+ * ```ts
  * const cocktail = await getCocktail("アイリッシュコーヒー");
- * \`\`\`
+ * ```
  */
 export const getCocktail = async (name: string): Promise<Cocktail> => {
   const res = await client.cocktail.$get({ query: { name } });

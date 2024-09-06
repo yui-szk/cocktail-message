@@ -1,9 +1,10 @@
-import { type Context, Hono } from "@hono/hono";
+import { Context, Hono } from "@hono/hono";
 export type { Hono };
 import { validator } from "@hono/hono/validator";
 import { crypto } from "@std/crypto";
 import { STATUS_CODE } from "@std/http/status";
 import { parse } from "@valibot/valibot";
+import { cors } from "@hono/hono/cors";
 
 import { Message } from "../utils/types.ts";
 export { Message };
@@ -37,6 +38,21 @@ import { cocktailApi } from "./mod.ts";
  * ```
  */
 export const app = new Hono()
+  .use(
+    "/",
+    cors({
+      origin: ["https://rod.expfrom.me", "http://localhost:8000"],
+      allowHeaders: [
+        "X-Custom-Header",
+        "Upgrade-Insecure-Requests",
+        "Content-Type",
+      ], // ここに追加
+      allowMethods: ["POST", "OPTIONS"],
+      exposeHeaders: ["Content-Length", "X-Kuma-Revision"],
+      maxAge: 600,
+      credentials: true,
+    }),
+  )
   .get("/", async (ctx: Context) => {
     const id: string | undefined = ctx.req.query("id");
     if (!id) {
@@ -76,4 +92,4 @@ export const app = new Hono()
         return ctx.text(error, STATUS_CODE.InternalServerError);
       }
     },
-  );
+  ).options("/", (ctx) => ctx.text("hoge"));

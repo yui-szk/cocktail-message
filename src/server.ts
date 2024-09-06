@@ -2,7 +2,6 @@ import { Hono } from "@hono/hono";
 export type { Hono };
 import { logger } from "@hono/hono/logger";
 import { serveStatic } from "@hono/hono/deno";
-
 import { createMessage } from "./components/router.tsx";
 import { app as api } from "./api/mod.ts";
 

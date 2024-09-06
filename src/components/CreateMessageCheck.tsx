@@ -139,7 +139,7 @@ export const CreateMessageCheck = () => {
           </div>
           <div class={cx(buttonStyle, sendButtonStyle)}>
             {/*share()の引数にはメッセージのidを入れる, 一旦1で固定*/}
-            <a onclick="share(1)" href="">
+            <a onclick="_share(1)" href="">
               気持ちを
               <br />
               送る

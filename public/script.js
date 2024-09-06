@@ -1,36 +1,5 @@
 let created_sentence = [];
 
-addEventListener("load", () => {
-  // ウィンドウが読み込まれた時の処理
-  fetch("/api/cocktail/all")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log("Received data:", data); // 取得したデータをコンソールに出力
-      // ここからデータのリストを作成
-      const liElements = document.getElementById("kennsaku_result");
-      for (i = 0; i < data.length; i++) {
-        const li = document.createElement("li");
-        li.setAttribute("onclick", "_buttonclick(this)");
-        li.textContent = data[i].word;
-
-        const small = document.createElement("small");
-        small.textContent = data[i].name;
-
-        li.appendChild(small);
-        liElements.appendChild(li);
-      }
-    })
-    .catch((error) => {
-      console.error("Error fetching data:", error); // エラーハンドリング
-    });
-});
-
-
 function _buttonclick(obj) {
   let text = "";
   obj.childNodes.forEach((node) => {
@@ -38,12 +7,19 @@ function _buttonclick(obj) {
       text += node.textContent.trim();
     }
   });
-  const selectedCocktailMessage = text; //クリックしたボタンの文字
+  const selectedCocktailMessage = text; //クリックしたボタンのword
 
-  if (document.getElementById("selected_message_list").childElementCount > 4) {
+  if (document.getElementById("selected_message_list").childElementCount >= 4) {
     alert("これ以上言葉を追加できません");
-  } else if (!created_sentence.includes(selectedCocktailMessage)) {
-    created_sentence.push(selectedCocktailMessage);
+  } else if (
+    created_sentence.filter((e) => {
+      return e.message === selectedCocktailMessage;
+    }).length === 0
+  ) {
+    created_sentence.push({
+      name: obj.childNodes[1].innerText,
+      message: selectedCocktailMessage,
+    });
 
     const newLi = document.createElement("li");
     newLi.textContent = selectedCocktailMessage;
@@ -92,14 +68,24 @@ document.addEventListener("DOMContentLoaded", () => {
         .join(" ");
       liElement.remove();
 
-      // constで宣言しても配列操作はできるのでconstにしておく
-      const tmp = [];
-      for (i = 0; i < created_sentence.length; i++) {
-        if (created_sentence[i] !== textContent) {
-          tmp.push(created_sentence[i]);
-        }
-      }
-      created_sentence = tmp;
+      created_sentence = created_sentence.filter((e) => {
+        return e.message !== textContent;
+      });
     }
   });
 });
+
+async function _messageSave() {
+  const cocktails = [];
+  created_sentence.forEach((e) => {
+    cocktails.push({ name: String(e.name) });
+  });
+  const res = await fetch("/api/message", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ "cocktails": cocktails }),
+  });
+
+  const body = await res.text();
+  document.getElementById("message_save").href = "/check?id=" + body;
+}

@@ -83,9 +83,26 @@ async function _messageSave() {
   const res = await fetch("/api/message", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ "cocktails": cocktails }),
+    body: JSON.stringify({ cocktails: cocktails }),
   });
 
   const body = await res.text();
   globalThis.location = "/check?id=" + body;
+}
+
+let flag = true;
+
+function _hidden() {
+  const elm = document.getElementById("message-container");
+  const buttonElm = document.getElementById("hidden-button");
+
+  if (flag === true) {
+    elm.setAttribute("style", "display: none;");
+    buttonElm.textContent = "ワードを表示";
+    flag = false;
+  } else {
+    elm.removeAttribute("style");
+    buttonElm.textContent = "ワードを非表示";
+    flag = true;
+  }
 }

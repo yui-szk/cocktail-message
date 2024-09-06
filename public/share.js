@@ -1,12 +1,15 @@
-async function _share(id) {
-  const title = "Cocktail message";
-  // 閲覧用のページまだないので、一旦productionのルートを置いておく
-  // TODO: 閲覧ページ用のURLに変更する
-  const baseUrl = "https://cocktail-message.deno.dev/";
-  const url = baseUrl + "?id=" + id;
+async function _share() {
+  const id = globalThis.location.search;
+  const title = "cocktail message";
+  const baseUrl = "https://cocktail-message.deno.dev/view";
+  const url = baseUrl + id;
   if (navigator.share) {
     try {
-      await navigator.share({ title: title, url: url, text: "カクテル" });
+      await navigator.share({
+        title: title,
+        url: url,
+        text: "作成したカクテルメッセージ",
+      });
     } catch (e) {
       console.log(e);
     }

@@ -152,8 +152,7 @@ export const CreateMessageCheck = async (
             <a href="./">つくり直す</a>
           </div>
           <div class={cx(buttonStyle, sendButtonStyle)}>
-            {/*share()の引数にはメッセージのidを入れる, 一旦1で固定*/}
-            <a onclick="_share(1)" href="">
+            <a onclick="_share()" href="">
               気持ちを
               <br />
               送る

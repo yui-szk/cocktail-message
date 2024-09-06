@@ -98,13 +98,13 @@ const sendButtonStyle = css`
  */
 
 export const CreateMessageCheck = async (
-  props: PropsWithChildren<{ id: string }>
+  props: PropsWithChildren<{ id: string }>,
 ) => {
   const id: string = props.id;
   const cocktails = (await getMessage(id)).cocktails.map(
     async (cocktailName: CocktailName) => {
       return await getCocktail(cocktailName.name);
-    }
+    },
   );
 
   let colors: string[] = [];
@@ -135,17 +135,15 @@ export const CreateMessageCheck = async (
               <div
                 class={messageStyle}
                 id={`grid-item-${index + 1}`}
-                style={
-                  (await getCocktail(cocktail.name)).word
-                    ? `background-color: ${
-                        (await getCocktail(cocktail.name)).color
-                      };`
-                    : "display: none"
-                }
+                style={(await getCocktail(cocktail.name)).word
+                  ? `background-color: ${
+                    (await getCocktail(cocktail.name)).color
+                  };`
+                  : "display: none"}
               >
                 <p>{(await getCocktail(cocktail.name)).word}</p>
               </div>
-            )
+            ),
           )}
         </div>
         <div class={buttonContainerStyle}>

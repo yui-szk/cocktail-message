@@ -4,7 +4,7 @@ async function _share(id) {
   // TODO: 閲覧ページ用のURLに変更する
   const baseUrl = "https://cocktail-message.deno.dev/";
   const url = baseUrl + "?id=" + id;
-  if (navigator.share) {
+  if (!!navigator.share) {
     try {
       await navigator.share({ title: title, url: url, text: "カクテル" });
     } catch (e) {

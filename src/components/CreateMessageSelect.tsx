@@ -33,7 +33,7 @@ const wordListContainerStyle = css`
   background-color: var(--color-base);
   border-radius: 1.25rem;
 
-  form {
+  #search-box {
     display: flex;
     padding: 1rem;
 
@@ -43,17 +43,19 @@ const wordListContainerStyle = css`
       font-size: 1rem;
       width: 100%;
       border-radius: 0.5rem 0 0 0.5rem;
-      padding: 0.75rem;
+      padding: 0.75rem 0 0.75rem 0.75rem;
       border: none;
       outline: none;
     }
 
-    button {
+    #search-icon {
       border: none;
       background-color: var(--color-main);
       color: var(--color-white);
       border-radius: 0 0.5rem 0.5rem 0;
-      padding-right: 0.5rem;
+      padding: 0 0.5rem;
+      display: flex;
+      align-items: center;
     }
   }
 `;
@@ -111,28 +113,22 @@ export const CreateMessageSelect = async () => {
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
       />
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
-      />
       <div>
         <div id="clicked_button">
           <ul class={selectedStyle} id="selected_message_list"></ul>
         </div>
         <div class={wordListContainerStyle}>
-          <div>
-            <form action="">
-              <input
-                type="text"
-                value=""
-                id="kennsaku"
-                placeholder="ここに検索したい語句を入力してください"
-                oninput="_kennsaku_show()"
-              />
-              <button type="submit">
-                <span class="material-symbols-outlined">search</span>
-              </button>
-            </form>
+          <div id="search-box">
+            <input
+              type="text"
+              value=""
+              id="kennsaku"
+              placeholder="検索ワードの入力"
+              oninput="_kennsaku_show()"
+            />
+            <div id="search-icon">
+              <span class="material-symbols-outlined">search</span>
+            </div>
           </div>
           <ul class={wordListStyle} id="kennsaku_result">
             {(await getAllCocktails()).map((cocktail: Cocktail) => (

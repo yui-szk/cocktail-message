@@ -23,6 +23,9 @@ function _buttonclick(obj) {
 
     const newLi = document.createElement("li");
     newLi.textContent = selectedCocktailMessage;
+    created_sentence.map(() => {
+      newLi.setAttribute("id", `selected-word-${created_sentence.length}`);
+    });
 
     const button = document.createElement("button");
     const span = document.createElement("span");
@@ -59,14 +62,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // イベントデリゲーションを使用してクリックイベントを処理
   clickedButtonContainer.addEventListener("click", function (event) {
     // クリックされた要素が <li> 要素かどうかを確認
-    const liElement = event.target.closest("li");
+    const liElement = event.target.closest("button");
     if (liElement) {
       // <li> 要素内のテキストを取得
-      const textContent = Array.from(liElement.childNodes)
-        .filter((node) => node.nodeType === Node.TEXT_NODE)
-        .map((node) => node.textContent.trim())
-        .join(" ");
-      liElement.remove();
+      const textContent = liElement.parentNode.textContent.replace("close", "");
+      liElement.parentNode.remove();
 
       created_sentence = created_sentence.filter((e) => {
         return e.message !== textContent;
@@ -83,9 +83,26 @@ async function _messageSave() {
   const res = await fetch("cocktail-message-api.deno.dev/api/message", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ "cocktails": cocktails }),
+    body: JSON.stringify({ cocktails: cocktails }),
   });
 
   const body = await res.text();
   globalThis.location = "/check?id=" + body;
+}
+
+let flag = true;
+
+function _hidden() {
+  const elm = document.getElementById("message-container");
+  const buttonElm = document.getElementById("hidden-button");
+
+  if (flag === true) {
+    elm.setAttribute("style", "display: none;");
+    buttonElm.textContent = "ワードを表示";
+    flag = false;
+  } else {
+    elm.removeAttribute("style");
+    buttonElm.textContent = "ワードを非表示";
+    flag = true;
+  }
 }

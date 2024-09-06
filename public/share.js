@@ -11,6 +11,6 @@ async function share(id) {
       console.log(e);
     }
   } else {
-    alert(url);
+    alert(`共有用のURL: ${url}`);
   }
 }

@@ -1,4 +1,4 @@
-import { type Context, Hono } from "@hono/hono";
+import { Context, Hono } from "@hono/hono";
 export type { Hono };
 import { validator } from "@hono/hono/validator";
 import { crypto } from "@std/crypto";
@@ -76,4 +76,4 @@ export const app = new Hono()
         return ctx.text(error, STATUS_CODE.InternalServerError);
       }
     },
-  );
+  ).options("/",  (ctx) => ctx.text("hoge"));

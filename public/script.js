@@ -23,6 +23,9 @@ function _buttonclick(obj) {
 
     const newLi = document.createElement("li");
     newLi.textContent = selectedCocktailMessage;
+    created_sentence.map(() => {
+      newLi.setAttribute("id", `selected-word-${created_sentence.length}`);
+    });
 
     const button = document.createElement("button");
     const span = document.createElement("span");
@@ -59,14 +62,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // イベントデリゲーションを使用してクリックイベントを処理
   clickedButtonContainer.addEventListener("click", function (event) {
     // クリックされた要素が <li> 要素かどうかを確認
-    const liElement = event.target.closest("li");
+    const liElement = event.target.closest("button");
     if (liElement) {
       // <li> 要素内のテキストを取得
-      const textContent = Array.from(liElement.childNodes)
-        .filter((node) => node.nodeType === Node.TEXT_NODE)
-        .map((node) => node.textContent.trim())
-        .join(" ");
-      liElement.remove();
+      const textContent = liElement.parentNode.textContent.replace("close", "");
+      liElement.parentNode.remove();
 
       created_sentence = created_sentence.filter((e) => {
         return e.message !== textContent;

@@ -30,6 +30,7 @@ addEventListener("load", () => {
     });
 });
 
+
 function _buttonclick(obj) {
   let text = "";
   obj.childNodes.forEach((node) => {

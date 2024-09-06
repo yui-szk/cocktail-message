@@ -5,7 +5,7 @@
   },
   "fmt": { "exclude": ["LICENSE", ".github/**/*.md"] },
   "tasks": {
-    "run": "deno run --allow-env='API_URL' --allow-read='./public/,./private/cocktails.jsonc' --allow-net='0.0.0.0' --unstable-kv",
+    "run": "deno run --allow-env='API_URL,KV_ID,KV_ACCESS_TOKEN' --env='.env' --allow-read='./public/,./private/cocktails.jsonc' --allow-net='0.0.0.0' --unstable-kv",
     "start": "deno task run src/server.ts",
     "dev": "deno task run --watch src/server.ts",
     "test": "deno test  --allow-read='./public/,./private/cocktails.jsonc' --allow-net='0.0.0.0' --unstable-kv --parallel --shuffle"

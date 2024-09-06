@@ -2,6 +2,11 @@ import { parse } from "@std/jsonc";
 
 import type { Cocktail, Message } from "./types.ts";
 
+const kvId: string | undefined = Deno.env.get("KV_ID");
+const kvUrl: string | undefined = kvId
+  ? `https://api.deno.com/databases/${kvId}/connect`
+  : undefined;
+
 /**
  * Returns an array of cocktails data
  * @returns The array of cocktails data
@@ -29,7 +34,7 @@ export async function getCocktails(): Promise<Cocktail[]> {
  * ```
  */
 export async function getMessage(id: string): Promise<Message> {
-  const kv = await Deno.openKv();
+  const kv = await Deno.openKv(kvUrl);
   const result: Deno.KvEntryMaybe<{ message: Message }> = await kv.get([
     "messages",
     id,
@@ -57,7 +62,7 @@ export async function getMessage(id: string): Promise<Message> {
  * ```
  */
 export async function saveMessage(message: Message, id: string): Promise<void> {
-  const kv = await Deno.openKv();
+  const kv = await Deno.openKv(kvUrl);
   const result: Deno.KvCommitResult = await kv.set(["messages", id], {
     message,
   });

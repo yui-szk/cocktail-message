@@ -1,6 +1,9 @@
 import { css, cx } from "@hono/hono/css";
 import { WithHTML } from "../layout/WithHTML.tsx";
 import { CocktailGlass } from "./CocktailGlass.tsx";
+import { getCocktail, getMessage } from "./utils.ts";
+import { CocktailName } from "../api/utils/types.ts";
+import { PropsWithChildren } from "@hono/hono/jsx";
 
 const imageStyle = css`
   height: 75vh;
@@ -43,7 +46,6 @@ const messageContainerStyle = css`
 `;
 
 const messageStyle = css`
-  background-color: #eadf4a;
   min-width: 7rem;
   min-height: 7rem;
   border-radius: 100%;
@@ -54,6 +56,7 @@ const messageStyle = css`
 
   p {
     color: var(--color-black);
+    margin: 0 1rem;
   }
 `;
 
@@ -95,44 +98,55 @@ const sendButtonStyle = css`
  * 作成したメッセージを確認する画面を返す
  */
 
-export const CreateMessageCheck = () => {
+export const CreateMessageCheck = async (
+  props: PropsWithChildren<{ id: string }>,
+) => {
+  const id: string = props.id;
+  const cocktails = (await getMessage(id)).cocktails.map(
+    async (cocktailName: CocktailName) => {
+      return await getCocktail(cocktailName.name);
+    },
+  );
+
+  let colors: string[] = [];
+  for await (const cocktail of cocktails) colors.push(cocktail.color);
+  switch (colors.length) {
+    case 1:
+      colors = [colors[0], colors[0], colors[0], colors[0]];
+      break;
+    case 2:
+      colors = [colors[0], ...colors, colors[1]];
+      break;
+    case 3:
+      colors = [...colors, colors[colors.length - 1]];
+      break;
+    default:
+      colors;
+  }
+
   return (
     <WithHTML>
       <div>
         <div class={imageStyle}>
-          <CocktailGlass />
+          <CocktailGlass colors={colors} />
         </div>
         <div class={messageContainerStyle}>
-          <div class={messageStyle} id="grid-item-1">
-            <p>
-              あなたを
-              <br />
-              守りたい
-            </p>
-          </div>
-          <div class={messageStyle} id="grid-item-2">
-            <p>
-              あなたを
-              <br />
-              守りたい
-            </p>
-          </div>
-          <div class={messageStyle} id="grid-item-3">
-            <p>
-              あなたを
-              <br />
-              守りたい
-            </p>
-          </div>
-          <div class={messageStyle} id="grid-item-4">
-            <p>
-              あなたを
-              <br />
-              守りたい
-            </p>
-          </div>
+          {(await getMessage(id)).cocktails.map(
+            async (cocktail: CocktailName, index: number) => (
+              <div
+                class={messageStyle}
+                id={`grid-item-${index + 1}`}
+                style={(await getCocktail(cocktail.name)).word
+                  ? `background-color: ${
+                    (await getCocktail(cocktail.name)).color
+                  };`
+                  : "display: none"}
+              >
+                <p>{(await getCocktail(cocktail.name)).word}</p>
+              </div>
+            ),
+          )}
         </div>
-
         <div class={buttonContainerStyle}>
           <div class={buttonStyle}>
             <a href="./">つくり直す</a>

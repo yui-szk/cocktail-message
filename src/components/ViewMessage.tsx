@@ -1,4 +1,4 @@
-import { css,keyframes } from "@hono/hono/css";
+import { css, keyframes } from "@hono/hono/css";
 import { PropsWithChildren } from "@hono/hono/jsx";
 
 import { WithHTML } from "../layout/WithHTML.tsx";

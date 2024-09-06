@@ -142,7 +142,7 @@ export const CreateMessageSelect = async () => {
             ))}
           </ul>
           <div class={checkLinkStyle}>
-            <a href="./check">決定</a>
+            <a id="message_save" onclick="_messageSave()">決定</a>
           </div>
         </div>
       </div>

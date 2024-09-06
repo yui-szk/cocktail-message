@@ -33,6 +33,7 @@ const buttonStyle = css`
   display: flex;
   text-align: center;
   justify-content: center;
+  margin: 0 auto;
 
   a {
     display: block;

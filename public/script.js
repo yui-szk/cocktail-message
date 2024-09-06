@@ -87,5 +87,5 @@ async function _messageSave() {
   });
 
   const body = await res.text();
-  window.location = "/check?id=" + body;
+  Window.location = "/check?id=" + body;
 }

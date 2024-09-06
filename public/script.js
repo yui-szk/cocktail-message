@@ -80,7 +80,7 @@ async function _messageSave() {
   created_sentence.forEach((e) => {
     cocktails.push({ name: String(e.name) });
   });
-  const res = await fetch("http://cocktail-message-api.deno.dev/api/message", {
+  const res = await fetch("https://cocktail-message-api-cqygj7crcj20.deno.dev/api/message", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ "cocktails": cocktails }),

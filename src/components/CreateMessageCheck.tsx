@@ -86,6 +86,7 @@ const sendButtonStyle = css`
 
   a {
     color: var(--color-white);
+    background-color: var(--color-accent);
     padding: 2.1rem 1.5rem;
   }
 `;
@@ -137,7 +138,8 @@ export const CreateMessageCheck = () => {
             <a href="./">つくり直す</a>
           </div>
           <div class={cx(buttonStyle, sendButtonStyle)}>
-            <a href="./check">
+            {/*share()の引数にはメッセージのidを入れる, 一旦1で固定*/}
+            <a onclick="_share(1)" href="">
               気持ちを
               <br />
               送る
@@ -145,6 +147,7 @@ export const CreateMessageCheck = () => {
           </div>
         </div>
       </div>
+      <script src="./public/share.js"></script>
     </WithHTML>
   );
 };

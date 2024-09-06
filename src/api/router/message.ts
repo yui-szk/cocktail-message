@@ -41,7 +41,7 @@ export const app = new Hono()
   .use(
     "/",
     cors({
-      origin: ["https://cocktail-message-api.deno.dev:443", "http://localhost:8000"],
+      origin: ["*"],
       allowHeaders: [
         "X-Custom-Header",
         "Upgrade-Insecure-Requests",

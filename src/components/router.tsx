@@ -15,12 +15,12 @@ export const createMessage = new Hono();
 createMessage
   .get("/", (ctx) => ctx.html(<Home />))
   .get("/create", (ctx) => ctx.html(<CreateMessageTop />))
-  .get("/select", (ctx) => ctx.html(<CreateMessageSelect />))
-  .get("/check", (ctx) => {
+  .get("/select", async (ctx) => ctx.html(await (<CreateMessageSelect />)))
+  .get("/check", async (ctx) => {
     const id: string = ctx.req.query("id") || "";
-    return ctx.html(<CreateMessageCheck id={id} />);
+    return ctx.html(await (<CreateMessageCheck id={id} />));
   })
-  .get("/view", (ctx) => {
+  .get("/view", async (ctx) => {
     const id: string = ctx.req.query("id") || "";
-    return ctx.html(<ViewMessage id={id} />);
+    return ctx.html(await (<ViewMessage id={id} />));
   });

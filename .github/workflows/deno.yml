@@ -3,7 +3,7 @@ name: DenoDeploy
 on:
   push:
     branches:
-      - 'main'
+      - "main"
   workflow_dispatch:
 
 jobs:
@@ -22,5 +22,5 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: yui-szk-cocktail-me-22
-          entrypoint: pages/Home.tsx
-          root: src
+          entrypoint: src/pages/Home.tsx
+          root: .

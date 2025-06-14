@@ -22,5 +22,5 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: yui-szk-cocktail-me-22
-          entrypoint: src/pages/Home.tsx
+          entrypoint: src/server.ts
           root: .

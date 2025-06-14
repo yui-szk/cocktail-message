@@ -7,7 +7,7 @@ import { Cocktail, Message } from "../api/utils/types.ts";
 const url: string =
   Deno.env.get("API_URL") ||
   (Deno.env.get("DENO_DEPLOYMENT_ID")
-    ? "https://cocktail-message-api.deno.dev"
+    ? "https://yui-szk-cocktail-me-22.deno.dev"
     : "http://localhost:8000");
 
 console.log("Using API URL:", url);

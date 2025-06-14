@@ -3,8 +3,14 @@ import { hc } from "@hono/hono/client";
 import type { API } from "../api/mod.ts";
 import { Cocktail, Message } from "../api/utils/types.ts";
 
+// 本番環境と開発環境で異なるURLを使用
 const url: string =
-  Deno.env.get("API_URL") || "https://cocktail-message-api.deno.dev";
+  Deno.env.get("API_URL") ||
+  (Deno.env.get("DENO_DEPLOYMENT_ID")
+    ? "https://cocktail-message-api.deno.dev"
+    : "http://localhost:8000");
+
+console.log("Using API URL:", url);
 const client = hc<API>(`${url}/api`);
 
 /**
@@ -18,9 +24,27 @@ const client = hc<API>(`${url}/api`);
  * ```
  */
 export const getAllCocktails = async (): Promise<Cocktail[]> => {
-  const res = await client.cocktail.all.$get();
-  if (!res.ok) throw new Error(await res.text());
-  return await res.json();
+  try {
+    console.log("Fetching cocktails from:", `${url}/api/cocktail/all`);
+    const res = await client.cocktail.all.$get();
+    if (!res.ok) {
+      const errorText = await res.text();
+      console.error("API Error:", {
+        status: res.status,
+        statusText: res.statusText,
+        error: errorText,
+      });
+      throw new Error(
+        `API Error: ${res.status} ${res.statusText} - ${errorText}`
+      );
+    }
+    const data = await res.json();
+    console.log("Successfully fetched cocktails:", data.length);
+    return data;
+  } catch (error) {
+    console.error("Error in getAllCocktails:", error);
+    throw error;
+  }
 };
 
 /**

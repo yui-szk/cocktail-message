@@ -3,7 +3,8 @@ import { hc } from "@hono/hono/client";
 import type { API } from "../api/mod.ts";
 import { Cocktail, Message } from "../api/utils/types.ts";
 
-const url: string = Deno.env.get("API_URL") || "http://0.0.0.0:8000";
+const url: string =
+  Deno.env.get("API_URL") || "https://cocktail-message-api.deno.dev";
 const client = hc<API>(`${url}/api`);
 
 /**

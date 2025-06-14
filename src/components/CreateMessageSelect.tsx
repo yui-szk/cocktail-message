@@ -102,47 +102,70 @@ const checkLinkStyle = css`
   }
 `;
 
+const errorStyle = css`
+  color: var(--color-accent);
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+`;
+
 /**
  * メッセージを選択する画面を返す関数
  */
 
 export const CreateMessageSelect = async () => {
-  return (
-    <WithHTML>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
-      />
-      <div>
-        <div id="clicked_button">
-          <ul class={selectedStyle} id="selected_message_list"></ul>
-        </div>
-        <div class={wordListContainerStyle}>
-          <div id="search-box">
-            <input
-              type="text"
-              value=""
-              id="kennsaku"
-              placeholder="検索ワードの入力"
-              oninput="_kennsaku_show()"
-            />
-            <div id="search-icon">
-              <span class="material-symbols-outlined">search</span>
+  try {
+    const cocktails = await getAllCocktails();
+
+    return (
+      <WithHTML>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        />
+        <div>
+          <div id="clicked_button">
+            <ul class={selectedStyle} id="selected_message_list"></ul>
+          </div>
+          <div class={wordListContainerStyle}>
+            <div id="search-box">
+              <input
+                type="text"
+                value=""
+                id="kennsaku"
+                placeholder="検索ワードの入力"
+                oninput="_kennsaku_show()"
+              />
+              <div id="search-icon">
+                <span class="material-symbols-outlined">search</span>
+              </div>
+            </div>
+            <ul class={wordListStyle} id="kennsaku_result">
+              {cocktails.map((cocktail: Cocktail) => (
+                <li onclick="_buttonclick(this)">
+                  {cocktail.word} <small>{cocktail.name}</small>
+                </li>
+              ))}
+            </ul>
+            <div class={checkLinkStyle}>
+              <a id="message_save" onclick="_messageSave()">
+                決定
+              </a>
             </div>
           </div>
-          <ul class={wordListStyle} id="kennsaku_result">
-            {(await getAllCocktails()).map((cocktail: Cocktail) => (
-              <li onclick="_buttonclick(this)">
-                {cocktail.word} <small>{cocktail.name}</small>
-              </li>
-            ))}
-          </ul>
-          <div class={checkLinkStyle}>
-            <a id="message_save" onclick="_messageSave()">決定</a>
-          </div>
         </div>
-      </div>
-      <script src="./public/script.js"></script>
-    </WithHTML>
-  );
+        <script src="./public/script.js"></script>
+      </WithHTML>
+    );
+  } catch (error) {
+    console.error("Error in CreateMessageSelect:", error);
+    return (
+      <WithHTML>
+        <div class={errorStyle}>
+          <p>データの読み込み中にエラーが発生しました。</p>
+          <p>しばらく時間をおいて再度お試しください。</p>
+        </div>
+      </WithHTML>
+    );
+  }
 };

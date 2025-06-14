@@ -14,7 +14,20 @@ import { app as api } from "./api/mod.ts";
  * ```
  */
 export const app: Hono = new Hono();
-app.use(logger());
+
+// エラーハンドリングミドルウェアを追加
+app.use("*", async (c, next) => {
+  try {
+    await next();
+  } catch (err) {
+    console.error("Error:", err);
+    return c.text(`Internal Server Error: ${err.message}`, 500);
+  }
+});
+
+// ロガーミドルウェアを追加
+app.use("*", logger());
+
 app
   .route("/", createMessage)
   .route("/api", api)

@@ -4,7 +4,7 @@ import type { API } from "../api/mod.ts";
 import { Cocktail, Message } from "../api/utils/types.ts";
 
 const url: string =
-  Deno.env.get("API_URL") || "https://cocktail-message-api.deno.dev";
+  Deno.env.get("API_URL") || "https://yui-szk-cocktail-me-22.deno.dev/";
 const client = hc<API>(`${url}/api`);
 
 /**

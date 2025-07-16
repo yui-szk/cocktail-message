@@ -17,3 +17,10 @@
 - TypeScript: 開発段階で型に関するエラーを検出できるため、実行時エラーのリスクを減らし、コードの信頼性を高められる。
 - Hono: Honoは軽量で、起動が速く、処理速度も優れており、ユーザーはストレスなくメッセージの作成や送信を行える。
 - Deno: 単一の実行可能ファイルとしてビルドできるため、デプロイが非常に簡単である。そのため、迅速に本番環境へデプロイできる。
+
+## デザイン
+![design](https://github.com/yui-szk/cocktail-message/blob/main/public/images/design.png)
+
+## イメージ
+<img src="https://github.com/yui-szk/cocktail-message/blob/main/public/images/top.png" width="350px" alt="top">
+<img src="https://github.com/yui-szk/cocktail-message/blob/main/public/images/cocktail.png" width="350px" alt="cocktail">
